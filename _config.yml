@@ -9,12 +9,12 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: Centrarium
-subtitle: "A simple yet classy theme for your Jekyll website or blog"
-email: blcentra@gmail.com
-name: Ben Centra
+title: 賈蓋先's Blog
+subtitle: "Great things come from hard work and perseverance. No excuses."
+email: justinyu711@gmail.com
+name: YU CHENG CHANG
 description: >
-  A simple yet classy theme for your Jekyll website or blog.
+  Great things come from hard work, perseverance. No excuses.
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -78,8 +78,8 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: TheBenCentra
-    url: https://twitter.com/TheBenCentra
+    username: "@cycheng_Justin"
+    url: https://twitter.com/cyucheng_Justin
     desc: Follow me on Twitter
     share: true
 
@@ -92,15 +92,15 @@ social:
 
   - name: GitHub
     icon: github
-    username: bencentra
-    url: https://github.com/bencentra
+    username: yucchang
+    url: https://github.com/yucchang
     desc: Fork me on GitHub
     share: false
 
   - name: LinkedIn
     icon: linkedin
-    username: Ben Centra
-    url: https://www.linkedin.com/pub/ben-centra/47/769/60a
+    username: Yu Cheng Chang
+    url: https://www.linkedin.com/in/yu-cheng-chang-a47a3914b/
     desc: Connect with me on LinkedIn
     share: true
 
