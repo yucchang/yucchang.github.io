@@ -5,13 +5,14 @@ permalink: /about/
 main_nav: true
 ---
 
-![alt text]({{ site.baseurl }}/assets/profile-placeholder.gif "Profile Picture"){:.profile}
+![alt text]({{ site.baseurl }}/assets/IMG_5970.jpg "Profile Picture"){:.profile}
 
-Centrarium is a custom theme for Jekyll, made by [Ben Centra][bencentra] for his own blog. He'd be humbled if you liked it enough to use it as well! Installation and configuration instructions can be found in the [GitHub repository](https://github.com/bencentra/centrarium).
+Hi, I'm Yu Cheng. A guy always with big smile, and shorts plus Nike socks as my normal dresscode. aye...that's me in the pic trying to do some photosynthesis on a flower farm in Hokkaido. 
 
-This page is a good place to write about yourself, your project, your product, or whatever it is your site is for. You can replace the image above, or you can get rid of it entirely. 
+I'm paving a new path of my career through learning my very first programming language Ruby. So, I built this blog as a Tech Blog, but will still include a little bit of everything about me. 
 
-You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/). And you can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+To find out more, please visit [GitHub](https://github.com/yucchang).
+
 
 [centrarium]: https://github.com/bencentra/centrarium
 [bencentra]: http://bencentra.com

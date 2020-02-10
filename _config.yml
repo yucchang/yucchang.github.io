@@ -11,6 +11,7 @@ exclude:
 # Site settings
 title: 賈蓋先's Blog
 subtitle: "Great things come from hard work and perseverance. No excuses."
+# photo_credit: "photo by Sam Lee on Unsplash"
 email: justinyu711@gmail.com
 name: YU CHENG CHANG
 description: >
@@ -20,7 +21,7 @@ description: >
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "" # the base hostname & protocol for your site
-cover: "/assets/header_image.jpg"
+cover: "/assets/cover_image.jpg"
 logo: "/assets/logo.png"
 
 # Build settings
