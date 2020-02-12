@@ -6,9 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Feb 2020 22:55:28 +0800</pubDate>
-    <lastBuildDate>Tue, 11 Feb 2020 22:55:28 +0800</lastBuildDate>
+    <pubDate>Wed, 12 Feb 2020 23:22:33 +0800</pubDate>
+    <lastBuildDate>Wed, 12 Feb 2020 23:22:33 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Blogging with Jekyll on Github Pages</title>
+        <description>&lt;p&gt;This blog is built by Jekyll on Github Pages. What is &lt;strong&gt;Jekyll?&lt;/strong&gt; Jekyll is a static website generator, which can transform plain text into static site without a database and...</description>
+        <pubDate>Wed, 12 Feb 2020 18:00:00 +0800</pubDate>
+        <link>http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>A spark</title>
