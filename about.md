@@ -7,9 +7,9 @@ main_nav: true
 
 ![alt text]({{ site.baseurl }}/assets/IMG_5970.jpg "Profile Picture"){:.profile}
 
-Hi, I'm Yu Cheng. A guy always with big smile, and shorts plus Nike socks as a normal dresscode. Aye...that's me in the pic trying to do some photosynthesis on a flower farm in Hokkaido.
+Hi, I'm Yu Cheng. A guy always with big smile, and shorts plus Nike socks as a normal dresscode. 
 
-I am now strive for learning Ruby, Ruby on Rails, and Javascript. So, this blog is defined as a learning log, as the one and only way I could think to push myself trully understand things about programming, and a way to explain to others. Hopefully, I can write at least 2 articles a week. 
+I'm learning Ruby, Ruby on Rails, and Javascript. This blog is a programming learning log which is the only way I could think to push myself truly understand everything about programming.
 
 Come and check out my sites:
 [Linkedin][Linkedin]
