@@ -16,7 +16,10 @@
 
   <!-- External libraries -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
@@ -123,8 +126,6 @@
 
 	
 
-	
-
 
       </ul>
     </nav>
@@ -147,6 +148,28 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/programming/2020/02/14/string-symbol.html">Compare Symbol to String</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 ” 這個是什麼？“、“ 為什麼要使用? ”、 “ 什麼時候使用？”、“ 使用了有什麼好處？”。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～ 什麼是 String (字串) 什麼是 Symbol (符號)? 在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用class這個方法驗證。 String: A string object typically representing characters. 白話：任何以單引號或雙引號包起來的，在 Ruby 裡就是字串。例如："cube", 'cube' 甚至是 ":)" &gt;&gt; "cube".class &gt;&gt;'cube'.class &gt;&gt; ":)".class =&gt; String # 類別都是 String Symbol: Symbol...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 14, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Programming">Programming</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -183,28 +206,6 @@
       in 
         
         <a href="/category/Programming">Programming</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/jekyll/2015/04/20/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">April 20, 2015</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Jekyll">Jekyll</a>
         
       
       </div>
@@ -262,8 +263,6 @@
 
 	
 	<li class="nav-link"><a href="/typography/">Typography</a>
-	
-
 	
 
 	

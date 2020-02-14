@@ -15,7 +15,10 @@
 
   <!-- External libraries -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
@@ -120,8 +123,6 @@
 
 	
 
-	
-
 
       </ul>
     </nav>
@@ -163,19 +164,19 @@
 <article class="post-content">
   <p>This blog is built by Jekyll on Github Pages. What is <strong>Jekyll?</strong> Jekyll is a static website generator, which can transform plain text into static site without a database and a server. Sounds great, right?! Jekyll is written by <strong>Ruby</strong>, so it’s literally a Ruby gem, like Rails, Sinatra… and so many other gems. Of course you can find it on <a href="https://rubygems.org/search?utf8=✓&amp;query=jekyll">Rubygems</a>.</p>
 
-<h3 id="create-a-new-repo-on-github">Create a new repo on Github</h3>
-<p>First, you’ll need to create a new repository on Github by clicking the “+” beside your avatar, and hit “New Repository”. Fillout the repository name by choosing it wisely. Normally we use username.github.io for the repository name. When I say <em>Normally</em>, I mean <em>Should</em>. :) 
-<br /> 
-For example, I use yucchang.github.io as my username is yucchang. 
-<br /> 
-Check out <a href="https://help.github.com/en/github/working-with-github-pages/getting-started-with-github-pages">Github Pages</a>.</p>
+<h2 id="create-a-new-repo-on-github">Create a new repo on Github</h2>
+<p>First, you’ll need to create a new repository on Github by clicking the “+” beside your avatar, and hit “New Repository”. Fillout the repository name by choosing it wisely. Normally we use username.github.io for the repository name. When I say <em>Normally</em>, I mean <em>Should</em>. :)</p>
+
+<p>For example, I use yucchang.github.io as my username is yucchang.</p>
+
+<p>Check out <a href="https://help.github.com/en/github/working-with-github-pages/getting-started-with-github-pages">Github Pages</a>.</p>
 
 <p><img src="/assets/repo_jekyll.png" alt="Create a repo" /></p>
 
-<h3 id="install-jekyll">Install Jekyll</h3>
-<p>Once you’ve created the repo, you have to install Jekyll. As I mentioned, Jekyll is a gem , an application that includes some plugins (Ruby gems as well). 
-<br />
-<strong>Please note: In this step, everything is running on macOS.</strong></p>
+<h2 id="install-jekyll">Install Jekyll</h2>
+<p>Once you’ve created the repo, you have to install Jekyll. As I mentioned, Jekyll is a gem , an application that includes some plugins (Ruby gems as well).</p>
+
+<p><strong>Please note: In this step, everything is running on macOS.</strong></p>
 
 <p>In whatever directory:</p>
 <ol>
@@ -184,10 +185,10 @@ Check out <a href="https://help.github.com/en/github/working-with-github-pages/g
   <li>To see if Jekyll is properly installed. <br /><code class="highlighter-rouge">jekyll -v</code></li>
 </ol>
 
-<h3 id="build-up-your-site">Build up your site</h3>
-<p>Now, you can choose either by building up your site from the very beginning or by simply just apply themes on <a href="http://jekyllthemes.org">Jekyll theme</a> which in my case. Credit to <a href="https://github.com/bencentra">bencentra</a>.</p>
+<h2 id="build-up-your-site">Build up your site</h2>
+<p>Now, you can choose either by building up your site from the very beginning or by simply just apply themes on <a href="http://jekyllthemes.org">Jekyll theme</a> which in my case. <em>Credit give to <a href="https://github.com/bencentra">bencentra</a>.</em></p>
 
-<h4 id="if-you-decide-to-build-your-one-and-only-blog">If you decide to build your one and only blog:</h4>
+<h3 id="if-you-decide-to-build-your-one-and-only-blog">If you decide to build your one and only blog:</h3>
 <ol>
   <li>Run <code class="highlighter-rouge">jekyll new my-site</code></li>
   <li><code class="highlighter-rouge">$ cd my-site</code></li>
@@ -196,7 +197,7 @@ Check out <a href="https://help.github.com/en/github/working-with-github-pages/g
   <li>You can customized your site by specified the options in <code class="highlighter-rouge">_config.yml</code> under the root directory. Look up for more details on <a href="https://jekyllrb.com">Jekyll.com</a>.</li>
 </ol>
 
-<h4 id="or-build-fairly-nice-one-by-applying-themes">Or build fairly nice one by applying themes:</h4>
+<h3 id="or-build-fairly-nice-one-by-applying-themes">Or build fairly nice one by applying themes:</h3>
 <ol>
   <li>Create a directory. <br /> <code class="highlighter-rouge">mikir myblog</code></li>
   <li>Find your favorite theme, and link to their Github repo.</li>
@@ -207,9 +208,9 @@ Check out <a href="https://help.github.com/en/github/working-with-github-pages/g
   <li>Browse to http://localhost:4000</li>
 </ol>
 
-<p>Just as simple as above. I said so cause I made it. LOL 
-<br />
-Next, I will bring up some issues that I’ve encounted.</p>
+<p>Just as simple as above. I said so cause I made it. LOL</p>
+
+<p>Next, I will bring up some issues that I’ve dealed with.</p>
 
 <h3 id="reference">Reference:</h3>
 <ul>
@@ -439,8 +440,6 @@ Next, I will bring up some issues that I’ve encounted.</p>
 
 	
 	<li class="nav-link"><a href="/typography/">Typography</a>
-	
-
 	
 
 	

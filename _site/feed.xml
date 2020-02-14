@@ -6,9 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 13 Feb 2020 10:26:00 +0800</pubDate>
-    <lastBuildDate>Thu, 13 Feb 2020 10:26:00 +0800</lastBuildDate>
+    <pubDate>Fri, 14 Feb 2020 18:21:28 +0800</pubDate>
+    <lastBuildDate>Fri, 14 Feb 2020 18:21:28 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Compare Symbol to String</title>
+        <description>&lt;p&gt;趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 &lt;strong&gt;” 這個是什麼？“&lt;/strong&gt;、&lt;strong&gt;“ 為什麼要使用? ”&lt;/strong&gt;、 &lt;strong&gt;“ 什麼時候使用？”&lt;/strong&gt;、&lt;strong&gt;“ 使用了有什麼好處？”&lt;/strong&gt;。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～&lt;/p&gt; &lt;h2 id=&quot;什麼是-string-字串-什麼是-symbol-符號&quot;&gt;什麼是 String (字串) 什麼是 Symbol (符號)?&lt;/h2&gt; &lt;p&gt;&lt;strong&gt;在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用&lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;這個方法驗證。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;String:&lt;/strong&gt; A string...</description>
+        <pubDate>Fri, 14 Feb 2020 18:00:00 +0800</pubDate>
+        <link>/programming/2020/02/14/string-symbol.html</link>
+        <guid isPermaLink="true">/programming/2020/02/14/string-symbol.html</guid>
+        
+        <category>Ruby</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Blogging with Jekyll on Github Pages</title>
@@ -35,22 +49,6 @@
         
         
         <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different...</description>
-        <pubDate>Mon, 20 Apr 2015 16:43:59 +0800</pubDate>
-        <link>/jekyll/2015/04/20/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">/jekyll/2015/04/20/welcome-to-jekyll.html</guid>
-        
-        <category>jekyll</category>
-        
-        <category>welcome</category>
-        
-        
-        <category>Jekyll</category>
         
       </item>
     

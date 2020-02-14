@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Compare Symbol to String</title>
+  <meta name="description" content="趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 ” 這個是什麼？“、“ 為什麼要使用? ”、 “ 什麼時候使用？”、“ 使用了有什麼好處？”。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～">
+  
+  <meta name="author" content="YU CHENG CHANG">
+  <meta name="copyright" content="&copy; YU CHENG CHANG 2020">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css"> -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 ” 這個是什麼？“、“ 為什麼要使用? ”、 “ 什麼時候使用？”、“ 使用了有什麼好處？”。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～" />
+  <meta property="og:url" content="/programming/2020/02/14/string-symbol.html">
+  <meta property="og:site_name" content="賈蓋先's Blog" />
+  <meta property="og:title" content="Compare Symbol to String" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Compare Symbol to String">
+  <meta name="twitter:description" content="趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 ” 這個是什麼？“、“ 為什麼要使用? ”、 “ 什麼時候使用？”、“ 使用了有什麼好處？”。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～">
+  <meta name="twitter:image" content="/assets/logo.png">
+  <meta name="twitter:url" content="/programming/2020/02/14/string-symbol.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="/programming/2020/02/14/string-symbol.html">
+	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="賈蓋先's Blog">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Compare Symbol to String</h1>
+      <p class="info">by <strong>賈蓋先</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 14, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Programming">Programming</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 <strong>” 這個是什麼？“</strong>、<strong>“ 為什麼要使用? ”</strong>、 <strong>“ 什麼時候使用？”</strong>、<strong>“ 使用了有什麼好處？”</strong>。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～</p>
+
+<h2 id="什麼是-string-字串-什麼是-symbol-符號">什麼是 String (字串) 什麼是 Symbol (符號)?</h2>
+<p><strong>在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用<code class="highlighter-rouge">class</code>這個方法驗證。</strong></p>
+
+<p><strong>String:</strong> A string object typically representing <em>characters</em>.</p>
+
+<p>白話：任何以單引號或雙引號包起來的，在 Ruby 裡就是字串。例如：<code class="highlighter-rouge">"cube"</code>, <code class="highlighter-rouge">'cube'</code> 甚至是 <code class="highlighter-rouge">":)"</code></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">.</span><span class="nf">class</span>  
+<span class="o">&gt;&gt;</span><span class="s1">'cube'</span><span class="p">.</span><span class="nf">class</span>
+<span class="o">&gt;&gt;</span> <span class="s2">":)"</span><span class="p">.</span><span class="nf">class</span>
+<span class="o">=&gt;</span> <span class="no">String</span>    <span class="c1"># 類別都是 String </span></code></pre></figure>
+
+<p><strong>Symbol:</strong> Symbol object represents names and some strings in Ruby.</p>
+
+<p>白話：在文字前面加上冒號，就是符號。例如：<code class="highlighter-rouge">:cube</code> 其實英文也夠白話，但就是第一次看會：蝦?!</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="ss">:cube</span><span class="p">.</span><span class="nf">class</span>
+<span class="o">=&gt;</span> <span class="no">Symbol</span> </code></pre></figure>
+
+<h2 id="string-字串--symbol-符號-差別">String (字串) &amp; Symbol (符號) 差別?</h2>
+
+<h4 id="string-內容可以改變但-symbol-不行">String 內容可以改變，但 Symbol 不行</h4>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># 使用中括號填入數字 (index) 來取得字元</span>
+<span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="s2">"u"</span>
+<span class="c1"># Symbol 也 OK</span>
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="s2">"u"</span>
+
+<span class="c1"># 再來試著修改 String 裡面內容</span>
+<span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"t"</span>
+<span class="o">=&gt;</span> <span class="s2">"t"</span>
+<span class="c1"># 那要怎麼知道 "b" 真的被改成 "t" </span>
+<span class="o">&gt;&gt;</span> <span class="n">qq</span> <span class="o">=</span> <span class="s2">"cube"</span>
+<span class="o">&gt;&gt;</span> <span class="n">qq</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"t"</span>
+<span class="o">&gt;&gt;</span> <span class="n">qq</span>  <span class="c1"># =&gt; "cute" </span>
+<span class="c1"># Symbol </span>
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"t"</span>
+<span class="o">=&gt;</span> <span class="no">NoMethodError</span> <span class="p">(</span><span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`[]=' for :cube:Symbol)</span></code></pre></figure>
+
+<h4 id="symbol-效能比較好">Symbol 效能比較好</h4>
+<ul>
+  <li>以下以 <code class="highlighter-rouge">object_id</code> 實測。(<code class="highlighter-rouge">object_id</code> 代表物件在 Ruby 裡的 <code class="highlighter-rouge">id</code>，不同的物件想當然有不同 <code class="highlighter-rouge">id</code> 就像你跟我身份證號碼不一樣。)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span><span class="s2">"cube"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="o">=&gt;</span> <span class="mi">70264457789100</span>
+<span class="o">&gt;&gt;</span><span class="s2">"cube"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="o">=&gt;</span> <span class="mi">70264457789020</span>
+<span class="o">&gt;&gt;</span><span class="s2">"cube"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="o">=&gt;</span> <span class="mi">70264457788960</span>
+
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span>
+<span class="o">=&gt;</span> <span class="mi">1524828</span>
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span>
+<span class="o">=&gt;</span> <span class="mi">1524828</span>
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span>
+<span class="o">=&gt;</span> <span class="mi">1524828</span></code></pre></figure>
+
+<p>由此可知，每次輸入 <code class="highlighter-rouge">"cube"</code> 其實代表著不同物件。 (就跟你喊 <code class="highlighter-rouge">"怡君"</code> 很多人轉頭，但每個 <code class="highlighter-rouge">"怡君"</code> 是不一樣的個體啊! ) 不過這又能證明什麼? (笑) 其實這個 object_id 也表示物件於記憶體的位置，每個 String 明顯佔了不同位置，在 Ruby 要取用時也都得再產生一組 object_id 佔一個位。反之，Symbol 從一而終都是同個物件。</p>
+
+<ul>
+  <li>Symbol 物件在比對時也比 String 來得快</li>
+</ul>
+
+<p>我們使用函式庫 <a href="https://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html">Benchmark</a> 來量測程式碼執行效能：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>  <span class="c1"># =&gt; true</span>
+<span class="n">looping</span> <span class="o">=</span> <span class="mi">1000000000</span> 
+
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span> 
+  <span class="n">looping</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> 
+    <span class="s2">"foo"</span> <span class="o">==</span> <span class="s2">"foo"</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span> 
+<span class="o">=&gt;</span> <span class="mf">14.128060999999999</span>  
+
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span> 
+  <span class="n">looping</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> 
+    <span class="ss">:foo</span> <span class="o">==</span> <span class="ss">:foo</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span>
+<span class="o">=&gt;</span> <span class="mf">5.308579999999999</span></code></pre></figure>
+
+<p>kerker… 依照我這樣打，量測真的都要等到 total 秒數到。</p>
+
+<p>最終可看出 Symbol 的處理速度快得多，因為 Symbol 單純以 object_id 來比對，而 String 則是會以字元來逐一比對。就比對方式可以推論：Symbol 的處理速度會是比較固定的，但 String 的處理時間會隨著字元的長度而增加。</p>
+
+<h2 id="string-symbol-可以互相轉換">String, Symbol 可以互相轉換</h2>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># String to Symbol </span>
+<span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">.</span><span class="nf">to_sym</span> 
+<span class="o">&gt;&gt;</span> <span class="sx">%s(cube)</span> 
+<span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">.</span><span class="nf">intern</span> <span class="c1"># 這方法用起來比較不直覺，但結果都一樣</span>
+<span class="o">=&gt;</span> <span class="ss">:cube</span>
+
+<span class="c1"># Symbol to String </span>
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span><span class="p">.</span><span class="nf">to_s</span> 
+<span class="o">&gt;&gt;</span> <span class="ss">:cube</span><span class="p">.</span><span class="nf">id2name</span> 
+<span class="o">=&gt;</span> <span class="s2">"cube"</span></code></pre></figure>
+
+<h2 id="symbol-特性及使用時機">Symbol 特性及使用時機</h2>
+<h4 id="symbol-特性">Symbol 特性:</h4>
+<ol>
+  <li>不可變更 (Immutable), object_id 有唯一性</li>
+  <li>效能比 String 好</li>
+</ol>
+
+<h4 id="什麼時候該使用-symbol">什麼時候該使用 Symbol:</h4>
+<p>適合拿來當作 Hash 中的 Key:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="n">person</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">name: </span><span class="s2">"Rocky"</span><span class="p">,</span> <span class="ss">age: </span><span class="s2">"40"</span><span class="p">}</span>  
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Rocky"</span><span class="p">,</span> <span class="ss">:age</span> <span class="o">=&gt;</span> <span class="s2">"40"</span><span class="p">}</span>  </code></pre></figure>
+
+<p>又或者是設定 <code class="highlighter-rouge">attr_accessor</code>:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Cat</span>  
+<span class="nb">attr_accessor</span> <span class="ss">:name</span>  <span class="c1"># 這裡把 :name 傳給 attr_accessor 方法</span>
+<span class="k">end</span>
+
+<span class="n">cat1</span> <span class="o">=</span> <span class="n">cat</span><span class="p">.</span><span class="nf">new</span>  
+<span class="n">cat1</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s2">"Tuna"</span></code></pre></figure>
+
+<p><strong>BUT…</strong> String 也不是被打假的，String 在 Ruby 中內建的方法比較多，操作上會更靈活。使用上有疑慮，詳閱公開說明書 <a href="https://ruby-doc.org">Ruby doc</a></p>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li><a href="https://railsbook.tw/chapters/06-ruby-basic-2.html#symbol_class">龍哥 - 為你自己學 Ruby on Rails</a></li>
+  <li><a href="https://ruby-doc.org">Ruby.doc</a></li>
+  <li><a href="https://culttt.com/2015/04/22/what-are-symbols-in-ruby/">What are Symbols in Ruby?</a></li>
+  <li><a href="https://medium.com/@lcriswell/ruby-symbols-vs-strings-248842529fd9">Ruby Symbols vs. Strings</a></li>
+</ul>
+
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Ruby">Ruby</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+      <a href="//twitter.com/share?text=Compare+Symbol+to+String&url=%2Fprogramming%2F2020%2F02%2F14%2Fstring-symbol.html&via=@cycheng_Justin"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a href="//www.facebook.com/sharer.php?t=Compare+Symbol+to+String&u=%2Fprogramming%2F2020%2F02%2F14%2Fstring-symbol.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=%2Fprogramming%2F2020%2F02%2F14%2Fstring-symbol.html"
+        onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+        <i class="fa fa-linkedin-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a href="//plus.google.com/share?title=Compare+Symbol+to+String&url=%2Fprogramming%2F2020%2F02%2F14%2Fstring-symbol.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('/programming/2020/02/14/string-symbol.html') + '&title=Compare Symbol to String'; return false">
+        <i class="fa fa-reddit-square fa-lg"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">賈蓋先's Blog</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:justinyu711@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">justinyu711@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://twitter.com/cyucheng_Justin" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">@cycheng_Justin</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/yucchang" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">yucchang</span>
+            </a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b/" title="Connect with me on LinkedIn">
+              <i class="fa fa-linkedin"></i>
+              <span class="username">Yu Cheng Chang</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Great things come from hard work, perseverance. No excuses.
+</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1"></script>
+<script src="//unpkg.com/tippy.js@5"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>
