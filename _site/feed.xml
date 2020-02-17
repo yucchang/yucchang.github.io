@@ -2,20 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>賈蓋先's Blog</title>
-    <description>Great things come from hard work, perseverance. No excuses.
+    <description>Hi, this is Chang, feel free to contact me.
 </description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 14 Feb 2020 18:21:28 +0800</pubDate>
-    <lastBuildDate>Fri, 14 Feb 2020 18:21:28 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 17 Feb 2020 22:39:40 +0800</pubDate>
+    <lastBuildDate>Mon, 17 Feb 2020 22:39:40 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Block, Proc, Lambda</title>
+        <description>&lt;p&gt;面試一定會被問的問題：請你解釋解釋 Block, Proc, Lambda (笑)&lt;/p&gt; &lt;h2 id=&quot;block&quot;&gt;Block&lt;/h2&gt; &lt;p&gt;&lt;strong&gt;Ruby 是物件導向設計的程式語言。&lt;/strong&gt;所以，在 Ruby 裡所有東西幾乎都是物件，但 &lt;strong&gt;Block&lt;/strong&gt; 卻是少數例外。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Block&lt;/strong&gt; 就是 &lt;code class=&quot;highlighter-rouge&quot;&gt;code block&lt;/code&gt; 程式碼區塊，以 { }, do…end 呈現。&lt;/p&gt; &lt;p&gt;通常單行程式碼使用 { }, 多行則使用 do…end 將程式碼包起來,&lt;/p&gt; &lt;figure...</description>
+        <pubDate>Mon, 17 Feb 2020 18:00:00 +0800</pubDate>
+        <link>http://localhost:4000/programming/2020/02/17/block-proc-lambda.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/17/block-proc-lambda.html</guid>
+        
+        <category>Ruby</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Compare Symbol to String</title>
         <description>&lt;p&gt;趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 &lt;strong&gt;” 這個是什麼？“&lt;/strong&gt;、&lt;strong&gt;“ 為什麼要使用? ”&lt;/strong&gt;、 &lt;strong&gt;“ 什麼時候使用？”&lt;/strong&gt;、&lt;strong&gt;“ 使用了有什麼好處？”&lt;/strong&gt;。所以思緒脈絡大致會遵循這幾個原則，如有誤請幫忙指正。撩落去～&lt;/p&gt; &lt;h2 id=&quot;什麼是-string-字串-什麼是-symbol-符號&quot;&gt;什麼是 String (字串) 什麼是 Symbol (符號)?&lt;/h2&gt; &lt;p&gt;&lt;strong&gt;在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用&lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;這個方法驗證。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;String:&lt;/strong&gt; A string...</description>
         <pubDate>Fri, 14 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/14/string-symbol.html</link>
-        <guid isPermaLink="true">/programming/2020/02/14/string-symbol.html</guid>
+        <link>http://localhost:4000/programming/2020/02/14/string-symbol.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/14/string-symbol.html</guid>
         
         <category>Ruby</category>
         
@@ -28,8 +42,8 @@
         <title>Blogging with Jekyll on Github Pages</title>
         <description>&lt;p&gt;This blog is built by Jekyll on Github Pages. What is &lt;strong&gt;Jekyll?&lt;/strong&gt; Jekyll is a static website generator, which can transform plain text into static site without a database and...</description>
         <pubDate>Wed, 12 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/12/blogging-with-jekyll.html</link>
-        <guid isPermaLink="true">/programming/2020/02/12/blogging-with-jekyll.html</guid>
+        <link>http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</guid>
         
         <category>jekyll</category>
         
@@ -42,8 +56,8 @@
         <title>A spark</title>
         <description>&lt;blockquote&gt; &lt;p&gt;A single spark can start a prairie fire&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to...</description>
         <pubDate>Tue, 11 Feb 2020 17:01:00 +0800</pubDate>
-        <link>/programming/2020/02/11/a-spark.html</link>
-        <guid isPermaLink="true">/programming/2020/02/11/a-spark.html</guid>
+        <link>http://localhost:4000/programming/2020/02/11/a-spark.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/11/a-spark.html</guid>
         
         <category>mentality</category>
         
