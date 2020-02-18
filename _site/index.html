@@ -47,11 +47,11 @@
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="Hi, this is Chang, feel free to contact me.
 " />
-  <meta property="og:url" content="http://localhost:4000/index.html">
+  <meta property="og:url" content="/index.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
   <meta property="og:title" content="賈蓋先's Blog" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000/assets/logo.png" />
+  <meta property="og:image" content="/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -63,16 +63,16 @@
   <meta name="twitter:title" content="賈蓋先's Blog">
   <meta name="twitter:description" content="Hi, this is Chang, feel free to contact me.
 ">
-  <meta name="twitter:image" content="http://localhost:4000/assets/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/index.html">
+  <meta name="twitter:image" content="/assets/logo.png">
+  <meta name="twitter:url" content="/index.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
-	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="http://localhost:4000/feed.xml" />
+  <link rel="canonical" href="/">
+	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="/feed.xml" />
 	
 	<!-- Tooltips -->
 	<script type="text/javascript">
@@ -151,10 +151,10 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/programming/2020/02/17/block-proc-lambda.html">Block, Proc, Lambda</a>
+      <a class="post-link" href="/programming/2020/02/17/block.html">Block</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>面試一定會被問的問題：請你解釋解釋 Block, Proc, Lambda (笑) Block Ruby 是物件導向設計的程式語言。所以，在 Ruby 裡所有東西幾乎都是物件，但 Block 卻是少數例外。 Block 就是 code block 程式碼區塊，以 { }, do…end 呈現。 通常單行程式碼使用 { }, 多行則使用 do…end 將程式碼包起來, [*1..10].map { |num| num * 2 } [*1..10].map do # do something end 而在選擇使用 { }, do…end 還會影響先乘除後加減的計算, # 大括號優先順序高 p ([*1..10].map {...</p>
+      <p>Block Ruby 為物件導向程式語言，幾乎所有東西都是物件，但偏偏 Block 不是，那 Block 是什麼？ Block 指的是 Code Block 程式碼區塊，以 { }, do...end 呈現。通常單行程式碼使用 { }, 多行則使用 do...end。 而在選擇使用 { }, do...end, 會影響程式執行的優先權，像是數學的先乘除後加減規則： p ([*1..10].map { |num| num * 2 }) # { } 優先權高，正常執行 { } 內容 p ([1..10].map) do |num| num * 2 end # 相反地，do...end...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 17, 2020</div>
