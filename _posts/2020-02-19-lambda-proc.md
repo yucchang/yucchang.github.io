@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Lambda, Proc"
-date:   2020-02-19 22:00
+date:   2020-02-19 20:00
 author: 賈蓋先
 categories: Programming  
 tags:	Ruby 
