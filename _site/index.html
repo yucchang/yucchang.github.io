@@ -151,10 +151,32 @@
   
   <li>
     <h2>
+      <a class="post-link" href="/programming/2020/02/19/lambda-proc.html">Lambda, Proc</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts "This is block" } # =&gt; SyntaxError # 當然也無法指派給變數 block = { puts "This is block" } # =&gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc greeting =...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 19, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Programming">Programming</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
       <a class="post-link" href="/programming/2020/02/17/block.html">Block</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>Block Ruby 為物件導向程式語言，幾乎所有東西都是物件，但偏偏 Block 不是，那 Block 是什麼？ Block 指的是 Code Block 程式碼區塊，以 { }, do...end 呈現。通常單行程式碼使用 { }, 多行則使用 do...end。 而在選擇使用 { }, do...end, 會影響程式執行的優先權，像是數學的先乘除後加減規則： p ([*1..10].map { |num| num * 2 }) # { } 優先權高，正常執行 { } 內容 p ([1..10].map) do |num| num * 2 end # 相反地，do...end...</p>
+      <p>Block Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？ Block 指的是 Code block 程式碼區塊，以 { }, do...end 呈現。通常單行程式碼使用 { }, 多行則使用 do...end。 而在選擇使用 { }, do...end, 會影響程式執行的優先權，像是數學的先乘除後加減規則： p ([*1..10].map { |num| num * 2 }) # { } 優先權高，正常執行 { } 內容 p ([1..10].map) do |num| num * 2 end # 相反地，do...end...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">February 17, 2020</div>
