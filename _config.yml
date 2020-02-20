@@ -10,12 +10,12 @@ exclude:
 
 # Site settings
 title: 賈蓋先's Blog
-subtitle: "Usually about life, programming, or anything that can descirbed in words."
+subtitle: "Usually about programming, tech, life or anything that can descirbed in words."
 # photo_credit: "photo by Sam Lee on Unsplash"
 email: justinyu711@gmail.com
 name: YU CHENG CHANG
 description: >
-  Hi, this is my Tech bolg, feel free to contact me.
+  Hi, this is my Tech blog, feel free to contact me.
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.

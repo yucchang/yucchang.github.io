@@ -180,15 +180,13 @@ Ruby 會是這麼解讀: 對(1..3) 使用 collect 方法，collect 方法會掛�
 - 而 `&` 的出現讓 Block, Lambda, Proc 運用上更貼近 Anonymous function (匿名函式)
 
 ### Reference 
-- [method / block / yield / Proc / lambda 全面解釋]
-- [Ruby 中的 Block、Proc、Lambda 是什麼?]
 - [Ruby.doc]
 - [What does mapname mean in Ruby]
 - [What do you call &: operator in Ruby?] 
 
 
-[method / block / yield / Proc / lambda 全面解釋]: https://devfun.tw/t/method-block-yield-proc-lambda/110
-[Ruby 中的 Block、Proc、Lambda 是什麼?]: https://riverye.com/2019/11/15/Ruby-中的-Block、Proc、Lambda-是什麼？/
+
+
 [Ruby.doc]: https://www.rubydoc.info/stdlib/core/Symbol
 [What does mapname mean in Ruby]: https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby
 [What do you call &: operator in Ruby?]: https://stackoverflow.com/questions/2259775/what-do-you-call-the-operator-in-ruby
