@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Typography</title>
-  <meta name="description" content="Hi, this is my Tech blog, feel free to contact me.
-">
+  <title>Class, Module</title>
+  <meta name="description" content="在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼?">
   
   <meta name="author" content="YU CHENG CHANG">
   <meta name="copyright" content="&copy; YU CHENG CHANG 2020">
@@ -45,11 +44,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="Hi, this is my Tech blog, feel free to contact me.
-" />
-  <meta property="og:url" content="http://localhost:4000/typography/">
+  <meta property="og:description" content="在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼?" />
+  <meta property="og:url" content="http://localhost:4000/programming/2020/02/21/class-module.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
-  <meta property="og:title" content="Typography" />
+  <meta property="og:title" content="Class, Module" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="http://localhost:4000/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -60,18 +58,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Typography">
-  <meta name="twitter:description" content="Hi, this is my Tech blog, feel free to contact me.
-">
+  <meta name="twitter:title" content="Class, Module">
+  <meta name="twitter:description" content="在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼?">
   <meta name="twitter:image" content="http://localhost:4000/assets/logo.png">
-  <meta name="twitter:url" content="http://localhost:4000/typography/">
+  <meta name="twitter:url" content="http://localhost:4000/programming/2020/02/21/class-module.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/typography/">
+  <link rel="canonical" href="http://localhost:4000/programming/2020/02/21/class-module.html">
 	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -136,171 +133,254 @@
 
 
     <div class="page-content">
-        <div class="wrapper">
-<div class="page">
+        <div class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">Typography</h1>
-  </header>
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Class, Module</h1>
+      <p class="info">by <strong>賈蓋先</strong></p>
+    </header>
+  </div>
+</div>
 
-  <span class="page-divider">
+<div class="wrapper">
+
+ <span class="page-divider">
   <span class="one"></span>
   <span class="two"></span>
 </span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">February 21, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Programming">Programming</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>在前幾篇都有提到 Ruby 是<strong>物件導向程式語言 (Object-oriented programming)</strong>。一直提到<strong>物件導向</strong>，但説到底<strong>物件</strong>在程式世界到底是什麼?</p>
+
+<p>接下來就要介紹實現物件導向程式設計的重要元素：<strong>類別(Class)</strong>、<strong>物件(Object)</strong>、<strong>模組(Module)</strong></p>
+
+<h3 id="object">Object</h3>
+<p>直覺看到物件，大概會想到房地產業，用來形容房子、房間、土地的『物件』吧。</p>
+
+<p>物件在程式世界裡會是：</p>
+
+<p><strong>物件(Object) = 狀態(State) + 行為(Behavior)</strong></p>
+
+<p>舉出現實生活中的例子，比如：有隻一貓名叫 “酷羅”, 毛色是 “黑的”、“眼白黃的”、“瞳孔黑的” 這些狀態，酷羅會 “跳”、會 “走路”、還會 “把阿嬤吃掉” ？！(什麼鬼？)這些行為。</p>
+
+<p><img src="/assets/kuro.jpeg" alt="kuro" /></p>
+
+<h2 id="class">Class</h2>
+<p>那物件跟類別的關聯又是如何？</p>
+
+<p><strong>Object has class:</strong></p>
+
+<p>首先，我們可以對物件使用 <code class="highlighter-rouge">class</code> 判斷是屬哪種類別，</p>
+
+<p>Class create object:</p>
+
+<p>既然我們知道 <code class="highlighter-rouge">"string no.1"</code> 屬於 字串(String) 類別，從 Ruby.doc 那裡得知 String 有個 <code class="highlighter-rouge">upcase</code> 的方法可以將英文字母全部變大寫。那便可以大膽推測，從 String 類別產生出來的 <code class="highlighter-rouge">string no.1</code> 物件可以使用這個方法。往回推，String 類別裡應該記載著這個 <code class="highlighter-rouge">upcase</code> 方法。</p>
+
+<h2 id="module">Module</h2>
+
+</article>
 
 
-  <article class="post-content">
-    <p>The purpose of this HTML is to help determine what default settings are with Bitters and to make sure that all possible HTML Elements are included in this HTML so as to not miss any possible Elements when designing a site.</p>
 
-<hr />
-
-<h1 id="headings">Headings</h1>
-
-<h1>h1. Heading</h1>
-<h2>h2. Heading</h2>
-<h3>h3. Heading</h3>
-<h4>h4. Heading</h4>
-<h5>h5. Heading</h5>
-<h6>h6. Heading</h6>
-
-<hr />
-
-<h1 id="paragraph">Paragraph</h1>
-
-<p>Lorem ipsum dolor sit amet, <a href="#" title="test link">test link</a> adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.</p>
-
-<p>Lorem ipsum dolor sit amet, <em>emphasis</em> consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.</p>
-
-<hr />
-
-<h1 id="list_types">List Types</h1>
-
-<p>Lists are unstyled by defualt. To restore the original styling, add the <code>.default</code> class</p>
-
-<h3>Definition List</h3>
-<dl>
-  <dt>Definition List Title</dt>
-  <dd>This is a definition list division.</dd>
-</dl>
-
-<h3>Ordered List</h3>
-<ol>
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
-</ol>
-
-<h3>Unordered List</h3>
-<ul>
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
-</ul>
-
-<h3>Ordered List with <code>.default</code> class</h3>
-<ol class="default">
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
-</ol>
-
-<h3>Unordered List with <code>.default</code> class</h3>
-<ul class="default">
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
-</ul>
-
-<hr />
-
-<h1 id="form_elements">Fieldsets and Form Elements</h1>
-
-<fieldset>
-  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.</p>
-
-  <form>
-    <h2>Form Element</h2>
-
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.</p>
-
-    <p><label for="text_field">Text Field:</label>
-      <input type="text" id="text_field" /></p>
-
-    <p><label for="text_area">Text Area:</label>
-      <textarea id="text_area"></textarea></p>
-
-    <p><label for="select_element">Select Element:</label>
-      <select name="select_element">
-        <optgroup label="Option Group 1">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </optgroup>
-        <optgroup label="Option Group 2">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </optgroup>
-    </select></p>
-
-    <p><label for="radio_buttons">Radio Buttons:</label>
-      <label>
-        <input type="radio" class="radio" name="radio_button" value="radio_1" /> Radio 1
-      </label>
-      <label>
-        <input type="radio" class="radio" name="radio_button" value="radio_2" /> Radio 2
-      </label>
-      <label>
-        <input type="radio" class="radio" name="radio_button" value="radio_3" /> Radio 3
-      </label>
-    </p>
-
-    <p><label for="checkboxes">Checkboxes:</label>
-      <label>
-        <input type="checkbox" class="checkbox" name="checkboxes" value="check_1" /> Checkbox 1
-      </label>
-      <label>
-        <input type="checkbox" class="checkbox" name="checkboxes" value="check_2" /> Checkbox 2
-      </label>
-      <label>
-        <input type="checkbox" class="checkbox" name="checkboxes" value="check_3" /> Checkbox 3
-      </label>
-    </p>
-
-    <p><label for="password">Password:</label>
-      <input type="password" class="password" name="password" />
-    </p>
-
-    <p><label for="file">File Input:</label>
-      <input type="file" class="file" name="file" />
-    </p>
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/Ruby">Ruby</a>
+</section>
 
 
-    <p><input type="submit" value="Submit" /></p>
-  </form>
-</fieldset>
 
-<hr />
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
 
-<h1 id="tables">Tables</h1>
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+      <a href="//twitter.com/share?text=Class%2C+Module&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F21%2Fclass-module.html&via=@cycheng_Justin"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a href="//www.facebook.com/sharer.php?t=Class%2C+Module&u=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F21%2Fclass-module.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F21%2Fclass-module.html"
+        onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+        <i class="fa fa-linkedin-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a href="//plus.google.com/share?title=Class%2C+Module&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F21%2Fclass-module.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus-square fa-lg"></i>
+      </a>
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/programming/2020/02/21/class-module.html') + '&title=Class, Module'; return false">
+        <i class="fa fa-reddit-square fa-lg"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
 
-<table cellspacing="0" cellpadding="0">
-  <tr>
-    <th>Table Header 1</th><th>Table Header 2</th><th>Table Header 3</th>
-  </tr>
-  <tr>
-    <td>Division 1</td><td>Division 2</td><td>Division 3</td>
-  </tr>
-  <tr class="even">
-    <td>Division 1</td><td>Division 2</td><td>Division 3</td>
-  </tr>
-  <tr>
-    <td>Division 1</td><td>Division 2</td><td>Division 3</td>
-  </tr>
-</table>
-<p>&lt;/div&gt;</p>
 
-  </article>
+
 
 </div>
 </div>

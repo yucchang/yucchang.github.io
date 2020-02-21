@@ -4,18 +4,32 @@
     <title>賈蓋先's Blog</title>
     <description>Hi, this is my Tech blog, feel free to contact me.
 </description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Feb 2020 11:30:46 +0800</pubDate>
-    <lastBuildDate>Thu, 20 Feb 2020 11:30:46 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 21 Feb 2020 22:20:06 +0800</pubDate>
+    <lastBuildDate>Fri, 21 Feb 2020 22:20:06 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Class, Module</title>
+        <description>&lt;p&gt;在前幾篇都有提到 Ruby 是&lt;strong&gt;物件導向程式語言 (Object-oriented programming)&lt;/strong&gt;。一直提到&lt;strong&gt;物件導向&lt;/strong&gt;，但説到底&lt;strong&gt;物件&lt;/strong&gt;在程式世界到底是什麼?&lt;/p&gt; &lt;p&gt;接下來就要介紹實現物件導向程式設計的重要元素：&lt;strong&gt;類別(Class)&lt;/strong&gt;、&lt;strong&gt;物件(Object)&lt;/strong&gt;、&lt;strong&gt;模組(Module)&lt;/strong&gt;&lt;/p&gt; &lt;h3 id=&quot;object&quot;&gt;Object&lt;/h3&gt; &lt;p&gt;直覺看到物件，大概會想到房地產業，用來形容房子、房間、土地的『物件』吧。&lt;/p&gt; &lt;p&gt;物件在程式世界裡會是：&lt;/p&gt; &lt;p&gt;&lt;strong&gt;物件(Object) = 狀態(State) + 行為(Behavior)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;舉出現實生活中的例子，比如：有隻一貓名叫 “酷羅”, 毛色是 “黑的”、“眼白黃的”、“瞳孔黑的” 這些狀態，酷羅會 “跳”、會 “走路”、還會 “把阿嬤吃掉” ？！(什麼鬼？)這些行為。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/kuro.jpeg&quot; alt=&quot;kuro&quot; /&gt;&lt;/p&gt; &lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;...</description>
+        <pubDate>Fri, 21 Feb 2020 10:00:00 +0800</pubDate>
+        <link>http://localhost:4000/programming/2020/02/21/class-module.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/21/class-module.html</guid>
+        
+        <category>Ruby</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Lambda, Proc</title>
         <description>&lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;The devil is in the details.&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;p&gt;接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。&lt;/p&gt; &lt;p&gt;開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中，&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;This...</description>
         <pubDate>Wed, 19 Feb 2020 20:00:00 +0800</pubDate>
-        <link>/programming/2020/02/19/lambda-proc.html</link>
-        <guid isPermaLink="true">/programming/2020/02/19/lambda-proc.html</guid>
+        <link>http://localhost:4000/programming/2020/02/19/lambda-proc.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/19/lambda-proc.html</guid>
         
         <category>Ruby</category>
         
@@ -28,8 +42,8 @@
         <title>Block</title>
         <description>&lt;h2 id=&quot;block&quot;&gt;Block&lt;/h2&gt; &lt;p&gt;Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Block&lt;/strong&gt; 指的是 Code block 程式碼區塊，以 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;do...end&lt;/code&gt; 呈現。通常單行程式碼使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, 多行則使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;do...end&lt;/code&gt;。&lt;/p&gt; &lt;p&gt;而在選擇使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, &lt;code...</description>
         <pubDate>Mon, 17 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/17/block.html</link>
-        <guid isPermaLink="true">/programming/2020/02/17/block.html</guid>
+        <link>http://localhost:4000/programming/2020/02/17/block.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/17/block.html</guid>
         
         <category>Ruby</category>
         
@@ -42,8 +56,8 @@
         <title>Compare Symbol to String</title>
         <description>&lt;p&gt;趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 &lt;strong&gt;” 這個是什麼？“&lt;/strong&gt;、&lt;strong&gt;“ 為什麼要使用? ”&lt;/strong&gt;、 &lt;strong&gt;“ 什麼時候使用？”&lt;/strong&gt;、&lt;strong&gt;“ 使用了有什麼好處？”&lt;/strong&gt;。所以思緒脈絡大致會遵循這幾個原則，撩落去～&lt;/p&gt; &lt;h2 id=&quot;什麼是-string-字串-什麼是-symbol-符號&quot;&gt;什麼是 String (字串) 什麼是 Symbol (符號)?&lt;/h2&gt; &lt;p&gt;&lt;strong&gt;在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用&lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;這個方法驗證。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;String:&lt;/strong&gt; A string...</description>
         <pubDate>Fri, 14 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/14/string-symbol.html</link>
-        <guid isPermaLink="true">/programming/2020/02/14/string-symbol.html</guid>
+        <link>http://localhost:4000/programming/2020/02/14/string-symbol.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/14/string-symbol.html</guid>
         
         <category>Ruby</category>
         
@@ -56,8 +70,8 @@
         <title>Blogging with Jekyll on Github Pages</title>
         <description>&lt;p&gt;This blog is built by Jekyll on Github Pages. What is &lt;strong&gt;Jekyll?&lt;/strong&gt; Jekyll is a static website generator, which can transform plain text into static site without a database and...</description>
         <pubDate>Wed, 12 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/12/blogging-with-jekyll.html</link>
-        <guid isPermaLink="true">/programming/2020/02/12/blogging-with-jekyll.html</guid>
+        <link>http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/12/blogging-with-jekyll.html</guid>
         
         <category>jekyll</category>
         
@@ -70,8 +84,8 @@
         <title>A spark</title>
         <description>&lt;blockquote&gt; &lt;p&gt;A single spark can start a prairie fire&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to...</description>
         <pubDate>Tue, 11 Feb 2020 17:01:00 +0800</pubDate>
-        <link>/programming/2020/02/11/a-spark.html</link>
-        <guid isPermaLink="true">/programming/2020/02/11/a-spark.html</guid>
+        <link>http://localhost:4000/programming/2020/02/11/a-spark.html</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/11/a-spark.html</guid>
         
         <category>mentality</category>
         

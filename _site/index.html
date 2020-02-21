@@ -47,11 +47,11 @@
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="Hi, this is my Tech blog, feel free to contact me.
 " />
-  <meta property="og:url" content="/index.html">
+  <meta property="og:url" content="http://localhost:4000/index.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
   <meta property="og:title" content="賈蓋先's Blog" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/logo.png" />
+  <meta property="og:image" content="http://localhost:4000/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -63,16 +63,16 @@
   <meta name="twitter:title" content="賈蓋先's Blog">
   <meta name="twitter:description" content="Hi, this is my Tech blog, feel free to contact me.
 ">
-  <meta name="twitter:image" content="/assets/logo.png">
-  <meta name="twitter:url" content="/index.html">
+  <meta name="twitter:image" content="http://localhost:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/index.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="/">
-	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/">
+	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
 	<script type="text/javascript">
@@ -126,6 +126,8 @@
 
 	
 
+	
+
 
       </ul>
     </nav>
@@ -140,7 +142,7 @@
   <div class="scrim has-cover">
     <header class="site-header">
       <h1 class="title">賈蓋先's Blog</h1>
-      <p class="subtitle">Usually about programming, tech, life or anything that can descirbed in words.</p>
+      <p class="subtitle">Usually about programming, life or anything else that can described in words.</p>
       <!--   -->
     </header>
   </div>
@@ -148,6 +150,28 @@
 
 <div class="wrapper">
 <ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/programming/2020/02/21/class-module.html">Class, Module</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼? 接下來就要介紹實現物件導向程式設計的重要元素：類別(Class)、物件(Object)、模組(Module) Object 直覺看到物件，大概會想到房地產業，用來形容房子、房間、土地的『物件』吧。 物件在程式世界裡會是： 物件(Object) = 狀態(State) + 行為(Behavior) 舉出現實生活中的例子，比如：有隻一貓名叫 “酷羅”, 毛色是 “黑的”、“眼白黃的”、“瞳孔黑的” 這些狀態，酷羅會 “跳”、會 “走路”、還會 “把阿嬤吃掉” ？！(什麼鬼？)這些行為。 Class 那物件跟類別的關聯又是如何？ Object has class: 首先，我們可以對物件使用 class 判斷是屬哪種類別， Class create object: 既然我們知道 "string no.1" 屬於 字串(String) 類別，從 Ruby.doc 那裡得知 String 有個 upcase 的方法可以將英文字母全部變大寫。那便可以大膽推測，從 String 類別產生出來的 string no.1...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">February 21, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Programming">Programming</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
   
   <li>
     <h2>
@@ -234,28 +258,6 @@
     </section>
   </li>
   
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/programming/2020/02/11/a-spark.html">A spark</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>A single spark can start a prairie fire Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to learn my first programming language Ruby in Astro Camp, a full-stack coding bootcamp. At the end of the day, we as a...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 11, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Programming">Programming</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
   
 </ul>
 
@@ -267,12 +269,14 @@
       <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
     </span>
 		
-		<span class="page-number">Page 1 of 1</span>
+		<span class="page-number">Page 1 of 2</span>
 		
-		<span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-    </span>
+		<a class="newer-posts" href="/page/2/">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
 		
 	</p>
 </nav>
@@ -307,6 +311,8 @@
 
 	
 	<li class="nav-link"><a href="/typography/">Typography</a>
+	
+
 	
 
 	
