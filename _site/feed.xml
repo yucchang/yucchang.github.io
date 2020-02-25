@@ -6,9 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 23 Feb 2020 21:39:17 +0800</pubDate>
-    <lastBuildDate>Sun, 23 Feb 2020 21:39:17 +0800</lastBuildDate>
+    <pubDate>Tue, 25 Feb 2020 17:23:02 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Feb 2020 17:23:02 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Module</title>
+        <description>&lt;p&gt;接續上一篇&lt;strong&gt;類別(Class)&lt;/strong&gt;, 這篇來説說&lt;strong&gt;模組(Module)&lt;/strong&gt;吧！&lt;/p&gt; &lt;h2 id=&quot;module&quot;&gt;Module&lt;/h2&gt; &lt;p&gt;Module 的起手式：&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Skillset&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;surf&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# do something&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;如果還記得 Class 的起手式，會發現，寫起來好像一樣 @@?&lt;/p&gt;...</description>
+        <pubDate>Tue, 25 Feb 2020 17:00:00 +0800</pubDate>
+        <link>/programming/2020/02/25/module.html</link>
+        <guid isPermaLink="true">/programming/2020/02/25/module.html</guid>
+        
+        <category>Ruby</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Class</title>

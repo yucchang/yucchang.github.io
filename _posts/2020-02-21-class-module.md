@@ -47,7 +47,7 @@ end
 
 定義一個類別 `Pikachu`。再來，我們要賦予皮卡丘『們』一些招式。
 
-**特別注意:** 皮卡丘不是只有小智旁邊那隻皮卡丘！！皮卡丘是一個群體！
+**注意:** 皮卡丘也是屬於群體，不是只有小智旁邊那隻皮卡丘。: )
 
 ![pikachu](/assets/pikachu.png)
 
@@ -333,12 +333,14 @@ self.puts "privacy" # => NoMethodError
 
 接下來會繼續討論到**模組(Module)**。
 
-##### 後話：寫這篇很危險，邊寫邊釐清觀念的過程中，一不注意就......(這樣太危險...飛太遠～)但這是開始分享學習紀錄後出現的好現象。因不想篇幅太冗長(閱讀友善)，有些觀念沒辦法一篇蓋全。
-
 ### Reference 
 - [為你自己學 Ruby on Rails]
 - [Rubymostas]
 - [Ruby Access Control Basics][Ruby Access Control Basics: Public vs Private vs Protected methods]
+
+##### 後話：寫這篇很危險，邊寫邊釐清觀念的過程中，一不注意就......飛太遠～這樣太危險，但這是開始分享學習紀錄後出現的好現象。因不想篇幅太冗長(閱讀友善)，有些觀念沒辦法一篇蓋全。
+
+
 
 
 [為你自己學 Ruby on Rails]: https://railsbook.tw/chapters/08-ruby-basic-4.html
