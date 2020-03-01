@@ -6,9 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Feb 2020 17:46:10 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Feb 2020 17:46:10 +0800</lastBuildDate>
+    <pubDate>Sun, 01 Mar 2020 21:02:50 +0800</pubDate>
+    <lastBuildDate>Sun, 01 Mar 2020 21:02:50 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Quack - Duck Typing</title>
+        <description>&lt;p&gt;前幾篇都在提構成物件導向的特性。除物件導向特性外，Ruby 也是&lt;strong&gt;動態型別(Dynamically Typed)&lt;/strong&gt;的程式語言，蛤!蛤? 啥小朋友… (是的。在學習程式語言時，我大多數時候的第一反應)&lt;/p&gt; &lt;p&gt;但好險，這不在這篇討論範圍，不過遲早要面對 : )&lt;/p&gt; &lt;h2 id=&quot;duck-typing&quot;&gt;Duck Typing&lt;/h2&gt; &lt;p&gt;目前只需知道，Ruby 是動態型別的物件導向程式語言就好，而&lt;strong&gt;鴨子型別(Duck Typing)&lt;/strong&gt;則是為了實現這兩大特性的實踐，也可以說是 Ruby 設計原則。&lt;/p&gt; &lt;p&gt;這裡也不免俗地要引用一行解簡述何謂鴨子型別：&lt;/p&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;If it walks like a duck and quacks like a duck,...</description>
+        <pubDate>Sat, 29 Feb 2020 20:30:00 +0800</pubDate>
+        <link>/programming/2020/02/29/duck-typing.html</link>
+        <guid isPermaLink="true">/programming/2020/02/29/duck-typing.html</guid>
+        
+        <category>Ruby</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Module</title>
