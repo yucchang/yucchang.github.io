@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A spark</title>
-  <meta name="description" content="  A single spark can start a prairie fire">
+  <title>Truthy & Falsy</title>
+  <meta name="description" content="還記得在第一次面試時，被問了一個這樣的問題：請問 Truthy, Falsey value 在 Ruby 代表什麼?">
   
   <meta name="author" content="YU CHENG CHANG">
   <meta name="copyright" content="&copy; YU CHENG CHANG 2020">
@@ -44,12 +44,12 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="  A single spark can start a prairie fire" />
-  <meta property="og:url" content="http://localhost:4000/programming/2020/02/11/a-spark.html">
+  <meta property="og:description" content="還記得在第一次面試時，被問了一個這樣的問題：請問 Truthy, Falsey value 在 Ruby 代表什麼?" />
+  <meta property="og:url" content="http://localhost:4000/programming/2020/03/02/truthy-fasly.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
-  <meta property="og:title" content="A spark" />
+  <meta property="og:title" content="Truthy & Falsy" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000/assets/a_spark.jpg" />
+  <meta property="og:image" content="http://localhost:4000/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -58,17 +58,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A spark">
-  <meta name="twitter:description" content="  A single spark can start a prairie fire">
-  <meta name="twitter:image" content="http://localhost:4000/assets/a_spark.jpg">
-  <meta name="twitter:url" content="http://localhost:4000/programming/2020/02/11/a-spark.html">
+  <meta name="twitter:title" content="Truthy & Falsy">
+  <meta name="twitter:description" content="還記得在第一次面試時，被問了一個這樣的問題：請問 Truthy, Falsey value 在 Ruby 代表什麼?">
+  <meta name="twitter:image" content="http://localhost:4000/assets/logo.png">
+  <meta name="twitter:url" content="http://localhost:4000/programming/2020/03/02/truthy-fasly.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/programming/2020/02/11/a-spark.html">
+  <link rel="canonical" href="http://localhost:4000/programming/2020/03/02/truthy-fasly.html">
 	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -135,10 +135,10 @@
     <div class="page-content">
         <div class="post">
 
-<div class="post-header-container has-cover" style="background-image: url(/assets/a_spark.jpg);">
-  <div class="scrim has-cover">
+<div class="post-header-container " >
+  <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">A spark</h1>
+      <h1 class="title">Truthy & Falsy</h1>
       <p class="info">by <strong>賈蓋先</strong></p>
     </header>
   </div>
@@ -146,10 +146,14 @@
 
 <div class="wrapper">
 
-
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
 
 <section class="post-meta">
-  <div class="post-date">February 11, 2020</div>
+  <div class="post-date">March 2, 2020</div>
   <div class="post-categories">
   in 
     
@@ -160,24 +164,49 @@
 </section>
 
 <article class="post-content">
-  <blockquote>
-  <p>A single spark can start a prairie fire</p>
-</blockquote>
+  <p>還記得在第一次面試時，被問了一個這樣的問題：請問 <strong>Truthy</strong>, <strong>Falsey</strong> value 在 Ruby 代表什麼?</p>
 
-<p>Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to learn my first programming language <strong>Ruby</strong> in Astro Camp, a full-stack coding bootcamp.</p>
+<p>當時我腦袋突然一片空白，因為從來沒有思考過這個基本到不行，卻是程式邏輯、流程控制的基礎觀念。一陣緊張焦慮後，我試著回答出 <code class="highlighter-rouge">布林值</code> 這個答案，嘛～ 算是只答對一半(甚至不到)。</p>
 
-<p>At the end of the day, we as a team have developed a task management web-based application(Clone Trello), and were able to demonstrate our capability in front of many others. Now, I’ve acquired the fundamental skills on Ruby, Ruby on Rails, Javascript, and I’m seeking an opportunity to become a onboard developer.</p>
+<p>之後，面試官便問了幾題加入運算子(operator)並建構在此基礎上的程式邏輯判斷，想也知道我回答的哩哩落落，且信心受挫。不過也因為這次，讓我重新體認到基本的重要。</p>
 
-<p>Things that I’ve learned the most other than coding is how to deal with frustrations, and how to do self-learning. This post is a spark, and is going to ignite everything in me. As long as I’m <strong>DRY</strong> enough.</p>
+<p><strong>Truthy</strong>, <strong>Falsey</strong> value 影響著程式語言的邏輯判斷，主要與 <code class="highlighter-rouge">if..else</code>, <code class="highlighter-rouge">while</code> 等條件語句或是運算子(operator)相關聯。</p>
 
-<!-- photo credited to @januprasad on Unsplash -->
+<h2 id="what-is-truthy-and-falsey-value-in-ruby">What is Truthy and Falsey value in Ruby?</h2>
+
+<p>在 Ruby 中，除 <code class="highlighter-rouge">fasle</code>，<code class="highlighter-rouge">nil</code> 會被視為 Falsey value 外，其餘的皆被視為是 Truthy value。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">truthy_or_falsey</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">value</span> 
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> is truthy"</span>
+  <span class="k">else</span> 
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> is falsey"</span> 
+  <span class="k">end</span> 
+<span class="k">end</span> 
+
+<span class="p">[</span><span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="p">{},</span> <span class="no">Object</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">value</span><span class="o">|</span>
+  <span class="n">truthy_or_falsey</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">end</span> </code></pre></figure>
+
+<p>參考 <a href="https://gist.github.com/jfarmer/2647362">這篇</a> 設定 <code class="highlighter-rouge">truthy_or_falsey</code> 方法，並傳入 <code class="highlighter-rouge">value</code> 參數讓條件語句 <code class="highlighter-rouge">if..else</code> 判斷，結果為 <code class="highlighter-rouge">true</code> 則回傳 <code class="highlighter-rouge">#{value.inspect} is truthy</code>。反之，為 <code class="highlighter-rouge">false</code> 則執行 <code class="highlighter-rouge">#{value.inspect} is falsey</code>。</p>
+
+<p>可以進入 irb 試試看，會更清楚每個物件的回傳值。</p>
+
+<p>下一篇將結合<strong>運算子(operator)</strong>，瞧瞧 Ruby 如何判斷。</p>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li><a href="https://gist.github.com/jfarmer/2647362">“truthy” and “falsey” (or “falsy”) in Ruby</a></li>
+  <li><a href="https://riptutorial.com/ruby/example/2092/truthy-and-falsy-values">Truthy and Falsy values</a></li>
+</ul>
+
 
 </article>
 
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/mentality">mentality</a>
+  <strong>Tags:</strong> <a href="/tag/Ruby">Ruby</a>
 </section>
 
 
@@ -191,7 +220,7 @@
   
     
     
-      <a href="//twitter.com/share?text=A+spark&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html&via=@cycheng_Justin"
+      <a href="//twitter.com/share?text=Truthy+%26+Falsy&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F03%2F02%2Ftruthy-fasly.html&via=@cycheng_Justin"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
         <i class="fa fa-twitter-square fa-lg"></i>
       </a>
@@ -206,7 +235,7 @@
     
     
     
-      <a href="//www.facebook.com/sharer.php?t=A+spark&u=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//www.facebook.com/sharer.php?t=Truthy+%26+Falsy&u=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F03%2F02%2Ftruthy-fasly.html"
         onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
         <i class="fa fa-facebook-square fa-lg"></i>
       </a>
@@ -231,7 +260,7 @@
     
     
     
-      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F03%2F02%2Ftruthy-fasly.html"
         onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
         <i class="fa fa-linkedin-square fa-lg"></i>
       </a>
@@ -244,7 +273,7 @@
     
     
     
-      <a href="//plus.google.com/share?title=A+spark&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//plus.google.com/share?title=Truthy+%26+Falsy&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming%2F2020%2F03%2F02%2Ftruthy-fasly.html"
         onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
         <i class="fa fa-google-plus-square fa-lg"></i>
       </a>
@@ -342,7 +371,7 @@
     
     
     
-      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/programming/2020/02/11/a-spark.html') + '&title=A spark'; return false">
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/programming/2020/03/02/truthy-fasly.html') + '&title=Truthy & Falsy'; return false">
         <i class="fa fa-reddit-square fa-lg"></i>
       </a>
     
