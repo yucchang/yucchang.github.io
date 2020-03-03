@@ -153,10 +153,32 @@
   
   <li>
     <h2>
-      <a class="post-link" href="/programming/2020/03/02/truthy-fasly.html">Truthy & Falsy</a>
+      <a class="post-link" href="/programming/2020/03/03/operators.html">Logical Operators with Truthy & Falsey</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>還記得在第一次面試時，被問了一個這樣的問題：請問 Truthy, Falsey value 在 Ruby 代表什麼? 當時我腦袋突然一片空白，因為從來沒有思考過這個基本到不行，卻是程式邏輯、流程控制的基礎觀念。一陣緊張焦慮後，我試著回答出 布林值 這個答案，嘛～ 算是只答對一半(甚至不到)。 之後，面試官便問了幾題加入運算子(operator)並建構在此基礎上的程式邏輯判斷，想也知道我回答的哩哩落落，且信心受挫。不過也因為這次，讓我重新體認到基本的重要。 Truthy, Falsey value 影響著程式語言的邏輯判斷，主要與 if..else, while 等條件語句或是運算子(operator)相關聯。 What is Truthy and Falsey value in Ruby? 在 Ruby 中，除 fasle，nil 會被視為 Falsey value 外，其餘的皆被視為是 Truthy value。 def truthy_or_falsey(value) if value puts "#{value.inspect} is truthy" else puts "#{value.inspect} is falsey"...</p>
+      <p>Logical Operators 1. &amp;&amp;, and 只有兩個值皆為 true，才成立。 Ex: true &amp;&amp; true =&gt; true, false &amp;&amp; true =&gt; false 2. ||, or 只要有一個值為 true，就成立並回傳該值。 Ex: false || true =&gt; true, true || false =&gt; true 3. !, not 就是個唱反調的，如果該值為 Truthy，則回傳 false，反之亦然。 Ex: !true =&gt; false, !nil =&gt; true Truthy and Fasley...</p>
+    </section>
+    <section class="post-meta">
+      <div class="post-date">March 3, 2020</div>
+      <div class="post-categories">
+      in 
+        
+        <a href="/category/Programming">Programming</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  <hr>
+  
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/programming/2020/03/02/truthy-falsey.html">Truthy & Falsey</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      <p>還記得在第一次面試時，被問了一個這樣的問題：請問 Truthy, Falsey value 在 Ruby 代表什麼? 當時我腦袋突然一片空白，因為從來沒有思考過這個基本到不行，卻是程式邏輯、流程控制的基礎觀念。一陣緊張焦慮後，我試著回答出 布林值 這個答案，嘛～ 回答得很不完整。 之後，面試官便問了幾題加入運算子(operator)與條件語句並建構在此基礎上的程式邏輯判斷，想也知道我回答的哩哩落落，且信心受挫。不過也因為這次，讓我重新體認到基本的重要。 Truthy, Falsey value 是電腦運算、程式語言的邏輯判斷的基礎。 What are Truthy and Falsey values in Ruby? 在 Ruby 中，除 fasle，nil 會被視為 Falsey value 外，其餘的皆被視為是 Truthy value。(僅需記得什麼是 Fasely value 足矣) def truthy_or_falsey(value) if value puts "#{value.inspect} is truthy" else puts "#{value.inspect} is falsey"...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 2, 2020</div>
@@ -226,28 +248,6 @@
     </section>
     <section class="post-meta">
       <div class="post-date">February 23, 2020</div>
-      <div class="post-categories">
-      in 
-        
-        <a href="/category/Programming">Programming</a>
-        
-      
-      </div>
-    </section>
-  </li>
-  
-  <hr>
-  
-  
-  <li>
-    <h2>
-      <a class="post-link" href="/programming/2020/02/19/lambda-proc.html">Lambda, Proc</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts "This is block" } # =&gt; SyntaxError # 當然也無法指派給變數 block = { puts "This is block" } # =&gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc greeting =...</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">February 19, 2020</div>
       <div class="post-categories">
       in 
         
