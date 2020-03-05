@@ -9,7 +9,7 @@ main_nav: true
 
 Hi, I'm Yu Cheng. A guy always with big smile, and shorts plus Nike socks as my normal dresscode. 
 
-I'm learning Ruby, Ruby on Rails, and Javascript. This blog is a learning log which is about everthing I learned mostly on programming, and maybe a little of my life. Though I'm still a rookie of programming, but will get stronger and become a great programmer. 
+I'm learning Ruby, Ruby on Rails, and Javascript. This blog is a learning log which is about everthing I learned mostly on programming, and maybe a little of my life. 
 
 Peace.
 
