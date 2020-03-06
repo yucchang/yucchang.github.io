@@ -6,9 +6,23 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 05 Mar 2020 22:43:25 +0800</pubDate>
-    <lastBuildDate>Thu, 05 Mar 2020 22:43:25 +0800</lastBuildDate>
+    <pubDate>Fri, 06 Mar 2020 21:44:54 +0800</pubDate>
+    <lastBuildDate>Fri, 06 Mar 2020 21:44:54 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Rails 6.0.0 active_storage</title>
+        <description>&lt;p&gt;前陣子在做某公司初試題目，收到題目時還很開心(老實說就是&lt;strong&gt;CRUD&lt;/strong&gt;)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)&lt;/p&gt; &lt;h2 id=&quot;whats-the-problem&quot;&gt;What’s the Problem?&lt;/h2&gt; &lt;p&gt;說來不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且實作後台可以上傳多張圖片功能。&lt;/p&gt; &lt;p&gt;問題呼之欲出，&lt;code class=&quot;highlighter-rouge&quot;&gt;keyword&lt;/code&gt; 就是 &lt;strong&gt;Rails 6.0.0&lt;/strong&gt;, &lt;strong&gt;ActiveStorage has_many_attached&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;是的，憑藉 &lt;code class=&quot;highlighter-rouge&quot;&gt;keyword&lt;/code&gt; 可以 google 到一些蛛絲馬跡。(但似乎都只有英文?)&lt;/p&gt; &lt;h3 id=&quot;issues-on-github&quot;&gt;Issues on Github&lt;/h3&gt; &lt;p&gt;在 Rails Github...</description>
+        <pubDate>Fri, 06 Mar 2020 21:30:00 +0800</pubDate>
+        <link>/programming/2020/03/06/rails-activestorage.html</link>
+        <guid isPermaLink="true">/programming/2020/03/06/rails-activestorage.html</guid>
+        
+        <category>Rails</category>
+        
+        
+        <category>Programming</category>
+        
+      </item>
     
       <item>
         <title>Logical Operators with Truthy &amp; Falsey</title>
@@ -130,20 +144,6 @@
         <guid isPermaLink="true">/programming/2020/02/12/blogging-with-jekyll.html</guid>
         
         <category>jekyll</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>A spark</title>
-        <description>&lt;blockquote&gt; &lt;p&gt;A single spark can start a prairie fire&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to...</description>
-        <pubDate>Tue, 11 Feb 2020 17:01:00 +0800</pubDate>
-        <link>/programming/2020/02/11/a-spark.html</link>
-        <guid isPermaLink="true">/programming/2020/02/11/a-spark.html</guid>
-        
-        <category>mentality</category>
         
         
         <category>Programming</category>

@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A spark</title>
-  <meta name="description" content="  A single spark can start a prairie fire">
+  <title>Rails 6.0.0 active_storage</title>
+  <meta name="description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)">
   
   <meta name="author" content="YU CHENG CHANG">
   <meta name="copyright" content="&copy; YU CHENG CHANG 2020">
@@ -44,12 +44,12 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="  A single spark can start a prairie fire" />
-  <meta property="og:url" content="/programming/2020/02/11/a-spark.html">
+  <meta property="og:description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)" />
+  <meta property="og:url" content="/programming/2020/03/06/rails-activestorage.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
-  <meta property="og:title" content="A spark" />
+  <meta property="og:title" content="Rails 6.0.0 active_storage" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/a_spark.jpg" />
+  <meta property="og:image" content="/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -58,17 +58,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A spark">
-  <meta name="twitter:description" content="  A single spark can start a prairie fire">
-  <meta name="twitter:image" content="/assets/a_spark.jpg">
-  <meta name="twitter:url" content="/programming/2020/02/11/a-spark.html">
+  <meta name="twitter:title" content="Rails 6.0.0 active_storage">
+  <meta name="twitter:description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)">
+  <meta name="twitter:image" content="/assets/logo.png">
+  <meta name="twitter:url" content="/programming/2020/03/06/rails-activestorage.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="/programming/2020/02/11/a-spark.html">
+  <link rel="canonical" href="/programming/2020/03/06/rails-activestorage.html">
 	<link rel="alternate" type="application/rss+xml" title="賈蓋先's Blog" href="/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -139,10 +139,10 @@
     <div class="page-content">
         <div class="post">
 
-<div class="post-header-container has-cover" style="background-image: url(/assets/a_spark.jpg);">
-  <div class="scrim has-cover">
+<div class="post-header-container " >
+  <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">A spark</h1>
+      <h1 class="title">Rails 6.0.0 active_storage</h1>
       <p class="info">by <strong>賈蓋先</strong></p>
     </header>
   </div>
@@ -150,10 +150,14 @@
 
 <div class="wrapper">
 
-
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
 
 <section class="post-meta">
-  <div class="post-date">February 11, 2020</div>
+  <div class="post-date">March 6, 2020</div>
   <div class="post-categories">
   in 
     
@@ -164,24 +168,50 @@
 </section>
 
 <article class="post-content">
-  <blockquote>
-  <p>A single spark can start a prairie fire</p>
-</blockquote>
+  <p>前陣子在做某公司初試題目，收到題目時還很開心(老實說就是<strong>CRUD</strong>)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)</p>
 
-<p>Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to learn my first programming language <strong>Ruby</strong> in Astro Camp, a full-stack coding bootcamp.</p>
+<h2 id="whats-the-problem">What’s the Problem?</h2>
+<p>說來不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且實作後台可以上傳多張圖片功能。</p>
 
-<p>At the end of the day, we as a team have developed a task management web-based application(Clone Trello), and were able to demonstrate our capability in front of many others. Now, I’ve acquired the fundamental skills on Ruby, Ruby on Rails, Javascript, and I’m seeking an opportunity to become a onboard developer.</p>
+<p>問題呼之欲出，<code class="highlighter-rouge">keyword</code> 就是 <strong>Rails 6.0.0</strong>, <strong>ActiveStorage has_many_attached</strong>。</p>
 
-<p>Things that I’ve learned the most other than coding is how to deal with frustrations, and how to do self-learning. This post is a spark, and is going to ignite everything in me. As long as I’m <strong>DRY</strong> enough.</p>
+<p>是的，憑藉 <code class="highlighter-rouge">keyword</code> 可以 google 到一些蛛絲馬跡。(但似乎都只有英文?)</p>
 
-<!-- photo credited to @januprasad on Unsplash -->
+<h3 id="issues-on-github">Issues on Github</h3>
+<p>在 Rails Github 上就有在討論 Rails 6.0.0 <code class="highlighter-rouge">ActiveStorage</code>, <code class="highlighter-rouge">has_many_attached</code> 相關 issues，</p>
+
+<h4 id="issue-36374-activestorage-has_many_attached-attachemnts-get-destroyed-when-subsequent-files-attached">Issue <a href="https://github.com/rails/rails/issues/36374">#36374</a>: ActiveStorage has_many_attached attachemnts get destroyed when subsequent files attached</h4>
+<p>(rc 指的是 <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate">Release Candidate</a>)</p>
+
+<p>從 Issue 內容可進一步知道，Rails 6.0.0.rc1 ActiveStorage 在 has_many_attached 欲上傳多個附件時，會刪掉已存在的附件，再重新上傳一組新的附件。重點是在 Rails 5.2.2.1 時，預設是不會刪除原有的檔案。</p>
+
+<h4 id="pr-36716-preserve-existing-attachment-assignment-behavior-for-upgraded-apps">PR <a href="https://github.com/rails/rails/pull/36716">#36716</a>: Preserve existing attachment assignment behavior for upgraded apps</h4>
+
+<p>再來 Rails 其中一名 Member 便去 fix Issue#36374，而他也在 commit message 提到：他僅修改從 Rails 5.2 升級至 Rails 6.0 的應用程式。</p>
+
+<p>原生使用 Rails 6.0 的應用程式，使用 #attach 方法，即可避免在上傳新附件時，刪除原有的附件。</p>
+
+<h4 id="before-that">Before that</h4>
+<p>不過這已經是我在 <a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">Stackoverflow</a> 上找到解決方法之後的事了。裡面除了也提到 #attach 方法外，還有一個大絕招 - 到 <code class="highlighter-rouge">application.rb</code> 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 update 便不會再將原有的附件刪除了。</p>
+
+<p>過程中還有看到相關 issues, 甚至是文章討論此次修改。</p>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://github.com/rails/rails/issues/36374">#36374</a></li>
+  <li><a href="https://github.com/rails/rails/pull/36716">#36716</a></li>
+  <li><a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">Stackoverflow</a></li>
+  <li><a href="https://bloggie.io/@kinopyo/upgrade-guide-active-storage-in-rails-6">Upgrade Guide: ActiveStorage in Rails 6 and ImageProcessing</a></li>
+  <li><a href="https://github.com/rails/rails/issues/36806">#36806</a></li>
+</ul>
+
 
 </article>
 
 
 
 <section class="tags">
-  <strong>Tags:</strong> <a href="/tag/mentality">mentality</a>
+  <strong>Tags:</strong> <a href="/tag/Rails">Rails</a>
 </section>
 
 
@@ -195,7 +225,7 @@
   
     
     
-      <a href="//twitter.com/share?text=A+spark&url=%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html&via=@cycheng_Justin"
+      <a href="//twitter.com/share?text=Rails+6.0.0+active_storage&url=%2Fprogramming%2F2020%2F03%2F06%2Frails-activestorage.html&via=@cycheng_Justin"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
         <i class="fa fa-twitter-square fa-lg"></i>
       </a>
@@ -210,7 +240,7 @@
     
     
     
-      <a href="//www.facebook.com/sharer.php?t=A+spark&u=%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//www.facebook.com/sharer.php?t=Rails+6.0.0+active_storage&u=%2Fprogramming%2F2020%2F03%2F06%2Frails-activestorage.html"
         onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
         <i class="fa fa-facebook-square fa-lg"></i>
       </a>
@@ -235,7 +265,7 @@
     
     
     
-      <a href="//www.linkedin.com/shareArticle?mini=true&url=%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//www.linkedin.com/shareArticle?mini=true&url=%2Fprogramming%2F2020%2F03%2F06%2Frails-activestorage.html"
         onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
         <i class="fa fa-linkedin-square fa-lg"></i>
       </a>
@@ -248,7 +278,7 @@
     
     
     
-      <a href="//plus.google.com/share?title=A+spark&url=%2Fprogramming%2F2020%2F02%2F11%2Fa-spark.html"
+      <a href="//plus.google.com/share?title=Rails+6.0.0+active_storage&url=%2Fprogramming%2F2020%2F03%2F06%2Frails-activestorage.html"
         onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
         <i class="fa fa-google-plus-square fa-lg"></i>
       </a>
@@ -346,7 +376,7 @@
     
     
     
-      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('/programming/2020/02/11/a-spark.html') + '&title=A spark'; return false">
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('/programming/2020/03/06/rails-activestorage.html') + '&title=Rails 6.0.0 active_storage'; return false">
         <i class="fa fa-reddit-square fa-lg"></i>
       </a>
     
