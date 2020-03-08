@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Rails 6.0.0 active_storage</title>
-  <meta name="description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)">
+  <meta name="description" content="前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。">
   
   <meta name="author" content="YU CHENG CHANG">
   <meta name="copyright" content="&copy; YU CHENG CHANG 2020">
@@ -44,7 +44,7 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)" />
+  <meta property="og:description" content="前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。" />
   <meta property="og:url" content="/programming/2020/03/06/rails-activestorage.html">
   <meta property="og:site_name" content="賈蓋先's Blog" />
   <meta property="og:title" content="Rails 6.0.0 active_storage" />
@@ -59,7 +59,7 @@
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Rails 6.0.0 active_storage">
-  <meta name="twitter:description" content="前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)">
+  <meta name="twitter:description" content="前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。">
   <meta name="twitter:image" content="/assets/logo.png">
   <meta name="twitter:url" content="/programming/2020/03/06/rails-activestorage.html">
   
@@ -168,33 +168,60 @@
 </section>
 
 <article class="post-content">
-  <p>前陣子在做某公司初試題目，收到題目時還很開心(老實說就是<strong>CRUD</strong>)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑)</p>
+  <p>前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。</p>
 
 <h2 id="whats-the-problem">What’s the Problem?</h2>
-<p>說來不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且實作後台可以上傳多張圖片功能。</p>
+<p>現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。</p>
 
-<p>問題呼之欲出，<code class="highlighter-rouge">keyword</code> 就是 <strong>Rails 6.0.0</strong>, <strong>ActiveStorage has_many_attached</strong>。</p>
+<p>問題呼之欲出，keyword 就是 <strong>Rails 6.0.0</strong> 以及 <strong>上傳多個檔案</strong>。簡而言之就是 Rails 6.0 ActiveStorage <code class="highlighter-rouge">has_many_attached</code> 情況下，使用 <code class="highlighter-rouge">update</code> 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。</p>
 
-<p>是的，憑藉 <code class="highlighter-rouge">keyword</code> 可以 google 到一些蛛絲馬跡。(但似乎都只有英文?)</p>
+<p>それはまずいね！(真是太糟糕了~)</p>
 
-<h3 id="issues-on-github">Issues on Github</h3>
-<p>在 Rails Github 上就有在討論 Rails 6.0.0 <code class="highlighter-rouge">ActiveStorage</code>, <code class="highlighter-rouge">has_many_attached</code> 相關 issues，</p>
+<blockquote>
+  <blockquote>
+    <p>小腦補 - <a href="https://guides.rubyonrails.org/active_storage_overview.html">ActiveStorage</a> 是 Rails 5.2 後，Rails 支援檔案上傳的功能。可以將檔案上傳至 Google Could Storage, Amazon S3, Microsoft Azure Storage 等雲端儲存服務，也可以在開發或測試環境中搭配 local based-disk service 使用。</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="the-process">The Process</h2>
+<p>從 Github Rails 可以查到在討論 Rails 6.0.0 ActiveStorage, <code class="highlighter-rouge">has_many_attached</code> 相關 issues，我是透過這些討論抽絲剝繭找出解決方法</p>
 
 <h4 id="issue-36374-activestorage-has_many_attached-attachemnts-get-destroyed-when-subsequent-files-attached">Issue <a href="https://github.com/rails/rails/issues/36374">#36374</a>: ActiveStorage has_many_attached attachemnts get destroyed when subsequent files attached</h4>
-<p>(rc 指的是 <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate">Release Candidate</a>)</p>
+<p>從 Issue 內容可推測，預期 <code class="highlighter-rouge">has_many_attached</code> 的檔案上傳，既有的檔案不會被上傳的新檔案覆蓋。</p>
 
-<p>從 Issue 內容可進一步知道，Rails 6.0.0.rc1 ActiveStorage 在 has_many_attached 欲上傳多個附件時，會刪掉已存在的附件，再重新上傳一組新的附件。重點是在 Rails 5.2.2.1 時，預設是不會刪除原有的檔案。</p>
+<p>不過，Rails 6.0.0.rc1 ActiveStorage 使用 <code class="highlighter-rouge">has_many_attached</code> 建立關聯，上傳多個檔案情況下，會先刪掉已存在的檔案，再重新上傳新的檔案。(rc = <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate">Release Candidate</a>)</p>
+
+<p><img src="/assets/log.png" alt="log" /></p>
+
+<p>從 log 上可以看到執行 <code class="highlighter-rouge">product.update</code> 後，原有的檔案先被刪除，之後將新增的檔案存進資料庫並建立與 Product 的關聯。</p>
+
+<p>喔！有人早在 Beta 之後的 rc 就先發現並提出這個問題了，Great !!</p>
 
 <h4 id="pr-36716-preserve-existing-attachment-assignment-behavior-for-upgraded-apps">PR <a href="https://github.com/rails/rails/pull/36716">#36716</a>: Preserve existing attachment assignment behavior for upgraded apps</h4>
+<p>這個 PR 則是 Rails Member 對此 issue 做的修正。</p>
 
-<p>再來 Rails 其中一名 Member 便去 fix Issue#36374，而他也在 commit message 提到：他僅修改從 Rails 5.2 升級至 Rails 6.0 的應用程式。</p>
+<p><strong>Commit message 提到：此 PR 只修正 Rails 5.2 升上 Rails 6.0 的應用程式。</strong></p>
 
-<p>原生使用 Rails 6.0 的應用程式，使用 #attach 方法，即可避免在上傳新附件時，刪除原有的附件。</p>
+<p><strong>使用 Rails 6.0 或更新版本的應用程式則維持 rc 版本，刪除既有的檔案後上傳新的。Rails 6.0 的應用程式，可使用 <code class="highlighter-rouge">#attach</code> 方法，即可避免上傳新檔案時，刪除原有檔案。</strong></p>
 
-<h4 id="before-that">Before that</h4>
-<p>不過這已經是我在 <a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">Stackoverflow</a> 上找到解決方法之後的事了。裡面除了也提到 #attach 方法外，還有一個大絕招 - 到 <code class="highlighter-rouge">application.rb</code> 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 update 便不會再將原有的附件刪除了。</p>
+<p>Got it!! 現在我們知道使用 <code class="highlighter-rouge">#attach</code> 絕對可行。<a href="https://github.com/rails/rails/tree/master/activestorage">rails/activestorage</a> 就有示範如何在建立 <code class="highlighter-rouge">has_many_attached</code> 之後使用 <code class="highlighter-rouge">#attach</code>。</p>
 
-<p>過程中還有看到相關 issues, 甚至是文章討論此次修改。</p>
+<p>如果有興趣知道設定 <code class="highlighter-rouge">has_many_attached</code> 後的行為，建議進到 <code class="highlighter-rouge">/lib/active_storage/attached/model.rb/</code> 試著看看 source code，會發現裡面有 <code class="highlighter-rouge">purge</code> 方法。</p>
+
+<p>BTW, 使用 <code class="highlighter-rouge">purge</code> 可以刪除所有檔案。啊哈！現在我們理解為何 <code class="highlighter-rouge">has_many_attached</code> 會先刪除既有檔案了。</p>
+
+<h4 id="laziest-simplest-way"><del>Laziest</del> Simplest way</h4>
+<p>其實上面那些已是我在 Stackoverflow 上找到更 <del>偷懶</del>簡單的解決方法之後的事了。這篇 <a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">Stackoverflow</a> 裡的留言除了也提到 #attach 方法外，還有一個大絕招……</p>
+
+<p>到 <code class="highlighter-rouge">application.rb</code> 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 <code class="highlighter-rouge">update</code> 便不會再將原有的檔案先刪除了。- 實在太簡單，以至於我用了之後有點不好意思。</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>在網路上的留言討論總是可以找到更多的訊息，雖然繞了一大圈，一開始看了很多看不大懂的東西。但印象非常深刻。總之，</p>
+
+<ol>
+  <li>Use <code class="highlighter-rouge">#attach</code></li>
+  <li>In <code class="highlighter-rouge">application.rb</code>, <code class="highlighter-rouge">config.active_storage.replace_on_assign_to_many = false</code></li>
+</ol>
 
 <h2 id="reference">Reference</h2>
 <ul>

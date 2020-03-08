@@ -160,7 +160,7 @@
       <a class="post-link" href="/programming/2020/03/06/rails-activestorage.html">Rails 6.0.0 active_storage</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>前陣子在做某公司初試題目，收到題目時還很開心(老實說就是CRUD)。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終解決了，也有一點小心得。(笑) What’s the Problem? 說來不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且實作後台可以上傳多張圖片功能。 問題呼之欲出，keyword 就是 Rails 6.0.0, ActiveStorage has_many_attached。 是的，憑藉 keyword 可以 google 到一些蛛絲馬跡。(但似乎都只有英文?) Issues on Github 在 Rails Github 上就有在討論 Rails 6.0.0 ActiveStorage, has_many_attached 相關 issues， Issue #36374: ActiveStorage has_many_attached attachemnts get destroyed when subsequent files attached (rc 指的是 Release Candidate) 從 Issue...</p>
+      <p>前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。 What’s the Problem? 現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。 問題呼之欲出，keyword 就是 Rails 6.0.0 以及 上傳多個檔案。簡而言之就是 Rails 6.0 ActiveStorage has_many_attached 情況下，使用 update 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。 それはまずいね！(真是太糟糕了~) 小腦補 - ActiveStorage 是 Rails 5.2 後，Rails 支援檔案上傳的功能。可以將檔案上傳至 Google Could Storage, Amazon S3, Microsoft Azure Storage 等雲端儲存服務，也可以在開發或測試環境中搭配 local based-disk service 使用。 The Process 從 Github Rails 可以查到在討論...</p>
     </section>
     <section class="post-meta">
       <div class="post-date">March 6, 2020</div>
