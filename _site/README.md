@@ -1,1 +1,0 @@
-Yu Cheng Chang's blog 

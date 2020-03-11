@@ -1,153 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>賈蓋先's Blog</title>
-    <description>Hi, wlecome to my Tech blog, feel free to contact me.
-</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Mar 2020 23:59:28 +0800</pubDate>
-    <lastBuildDate>Sun, 08 Mar 2020 23:59:28 +0800</lastBuildDate>
-    <generator>Jekyll v3.8.6</generator>
-    
-      <item>
-        <title>Rails 6.0.0 active_storage</title>
-        <description>&lt;p&gt;前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。&lt;/p&gt; &lt;h2 id=&quot;whats-the-problem&quot;&gt;What’s the Problem?&lt;/h2&gt; &lt;p&gt;現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。&lt;/p&gt; &lt;p&gt;問題呼之欲出，keyword 就是 &lt;strong&gt;Rails 6.0.0&lt;/strong&gt; 以及 &lt;strong&gt;上傳多個檔案&lt;/strong&gt;。簡而言之就是 Rails 6.0 ActiveStorage &lt;code class=&quot;highlighter-rouge&quot;&gt;has_many_attached&lt;/code&gt; 情況下，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;update&lt;/code&gt; 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。&lt;/p&gt; &lt;p&gt;それはまずいね！(真是太糟糕了~)&lt;/p&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;小腦補 -...</description>
-        <pubDate>Fri, 06 Mar 2020 21:30:00 +0800</pubDate>
-        <link>/programming/2020/03/06/rails-activestorage.html</link>
-        <guid isPermaLink="true">/programming/2020/03/06/rails-activestorage.html</guid>
-        
-        <category>Rails</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Logical Operators with Truthy &amp; Falsey</title>
-        <description>&lt;h2 id=&quot;logical-operators&quot;&gt;Logical Operators&lt;/h2&gt; &lt;h3 id=&quot;1---and&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;, and&lt;/h3&gt; &lt;p&gt;只有兩個值皆為 true，才成立。&lt;/p&gt; &lt;p&gt;Ex: &lt;code class=&quot;highlighter-rouge&quot;&gt;true &amp;amp;&amp;amp; true =&amp;gt; true&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;false &amp;amp;&amp;amp; true =&amp;gt; false&lt;/code&gt;&lt;/p&gt; &lt;h3 id=&quot;2---or&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;, or&lt;/h3&gt; &lt;p&gt;只要有一個值為 true，就成立並回傳該值。&lt;/p&gt;...</description>
-        <pubDate>Tue, 03 Mar 2020 22:50:00 +0800</pubDate>
-        <link>/programming/2020/03/03/operators.html</link>
-        <guid isPermaLink="true">/programming/2020/03/03/operators.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Truthy &amp; Falsey</title>
-        <description>&lt;p&gt;還記得在第一次面試時，被問了一個這樣的問題：請問 &lt;strong&gt;Truthy&lt;/strong&gt;, &lt;strong&gt;Falsey&lt;/strong&gt; value 在 Ruby 代表什麼?&lt;/p&gt; &lt;p&gt;當時我腦袋突然一片空白，因為從來沒有思考過這個基本到不行，卻是程式邏輯、流程控制的基礎觀念。一陣緊張焦慮後，我試著回答出 &lt;code class=&quot;highlighter-rouge&quot;&gt;布林值&lt;/code&gt; 這個答案，嘛～ 回答得很不完整。&lt;/p&gt; &lt;p&gt;之後，面試官便問了幾題加入運算子(operator)與條件語句並建構在此基礎上的程式邏輯判斷，想也知道我回答的哩哩落落，且信心受挫。不過也因為這次，讓我重新體認到基本的重要。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Truthy&lt;/strong&gt;, &lt;strong&gt;Falsey&lt;/strong&gt; value 是電腦運算、程式語言的邏輯判斷的基礎。&lt;/p&gt; &lt;h2 id=&quot;what-are-truthy-and-falsey-values-in-ruby&quot;&gt;What are Truthy and Falsey values in Ruby?&lt;/h2&gt; &lt;p&gt;在 Ruby 中，除 &lt;code...</description>
-        <pubDate>Mon, 02 Mar 2020 23:20:00 +0800</pubDate>
-        <link>/programming/2020/03/02/truthy-falsey.html</link>
-        <guid isPermaLink="true">/programming/2020/03/02/truthy-falsey.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Quack - Duck Typing</title>
-        <description>&lt;p&gt;前幾篇都在提構成物件導向的特性。除物件導向特性外，Ruby 也是&lt;strong&gt;動態型別(Dynamically Typed)&lt;/strong&gt;的程式語言，蛤!蛤? 啥小朋友… (是的。在學習程式語言時，我大多數時候的第一反應)&lt;/p&gt; &lt;p&gt;但好險，這不在這篇討論範圍，不過遲早要面對 : )&lt;/p&gt; &lt;h2 id=&quot;duck-typing&quot;&gt;Duck Typing&lt;/h2&gt; &lt;p&gt;目前只需知道，Ruby 是動態型別的物件導向程式語言就好，而&lt;strong&gt;鴨子型別(Duck Typing)&lt;/strong&gt;則是為了實現這兩大特性的實踐，也可以說是 Ruby 設計原則。&lt;/p&gt; &lt;p&gt;這裡也不免俗地要引用一行解簡述何謂鴨子型別：&lt;/p&gt; &lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;If it walks like a duck and quacks like a duck,...</description>
-        <pubDate>Sat, 29 Feb 2020 20:30:00 +0800</pubDate>
-        <link>/programming/2020/02/29/duck-typing.html</link>
-        <guid isPermaLink="true">/programming/2020/02/29/duck-typing.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Module</title>
-        <description>&lt;p&gt;接續上一篇&lt;strong&gt;類別(Class)&lt;/strong&gt;, 這篇來説說&lt;strong&gt;模組(Module)&lt;/strong&gt;吧！&lt;/p&gt; &lt;h2 id=&quot;module&quot;&gt;Module&lt;/h2&gt; &lt;p&gt;Module 的起手式：&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Skill03&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;surf&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# do something&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt; &lt;p&gt;如果還記得 Class 的起手式，會發現，寫起來好像一樣 @@?&lt;/p&gt;...</description>
-        <pubDate>Tue, 25 Feb 2020 17:00:00 +0800</pubDate>
-        <link>/programming/2020/02/25/module.html</link>
-        <guid isPermaLink="true">/programming/2020/02/25/module.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Class</title>
-        <description>&lt;p&gt;在前幾篇都有提到 Ruby 是&lt;strong&gt;物件導向程式語言 (Object-oriented programming)&lt;/strong&gt;。一直提到&lt;strong&gt;物件導向&lt;/strong&gt;，但説到底&lt;strong&gt;物件&lt;/strong&gt;在程式世界到底是什麼?&lt;/p&gt; &lt;p&gt;接下來會花2-3篇介紹實現物件導向程式設計的重要元素：&lt;strong&gt;類別(Class)&lt;/strong&gt;、&lt;strong&gt;物件(Object)&lt;/strong&gt;、&lt;strong&gt;模組(Module)&lt;/strong&gt;&lt;/p&gt; &lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt; &lt;h3 id=&quot;object&quot;&gt;Object&lt;/h3&gt; &lt;p&gt;&lt;strong&gt;物件(Object) = 狀態(State) + 行為(Behavior)&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;那物件跟類別的關聯又是如何？&lt;/p&gt; &lt;h4 id=&quot;object-has-class&quot;&gt;Object has class:&lt;/h4&gt; &lt;p&gt;首先，我們可以對物件使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; 或是 &lt;code class=&quot;highlighter-rouge&quot;&gt;is_a?&lt;/code&gt; 判斷屬哪種類別，&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot;...</description>
-        <pubDate>Sun, 23 Feb 2020 20:00:00 +0800</pubDate>
-        <link>/programming/2020/02/23/class-module.html</link>
-        <guid isPermaLink="true">/programming/2020/02/23/class-module.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Lambda, Proc</title>
-        <description>&lt;blockquote&gt; &lt;blockquote&gt; &lt;p&gt;The devil is in the details.&lt;/p&gt; &lt;/blockquote&gt; &lt;/blockquote&gt; &lt;p&gt;接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。&lt;/p&gt; &lt;p&gt;開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中，&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;This...</description>
-        <pubDate>Wed, 19 Feb 2020 20:00:00 +0800</pubDate>
-        <link>/programming/2020/02/19/lambda-proc.html</link>
-        <guid isPermaLink="true">/programming/2020/02/19/lambda-proc.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Block</title>
-        <description>&lt;h2 id=&quot;block&quot;&gt;Block&lt;/h2&gt; &lt;p&gt;Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Block&lt;/strong&gt; 指的是 Code block 程式碼區塊，以 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;do...end&lt;/code&gt; 呈現。通常單行程式碼使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, 多行則使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;do...end&lt;/code&gt;。&lt;/p&gt; &lt;p&gt;而在選擇使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;{ }&lt;/code&gt;, &lt;code...</description>
-        <pubDate>Mon, 17 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/17/block.html</link>
-        <guid isPermaLink="true">/programming/2020/02/17/block.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Compare Symbol to String</title>
-        <description>&lt;p&gt;趁著再釐清觀念，打一篇加深自己的印象，順便整理一下學習隨筆。其實，龍哥在上課期間就不斷強調的是學習過程中必須去思考 &lt;strong&gt;” 這個是什麼？“&lt;/strong&gt;、&lt;strong&gt;“ 為什麼要使用? ”&lt;/strong&gt;、 &lt;strong&gt;“ 什麼時候使用？”&lt;/strong&gt;、&lt;strong&gt;“ 使用了有什麼好處？”&lt;/strong&gt;。所以思緒脈絡大致會遵循這幾個原則，撩落去～&lt;/p&gt; &lt;h2 id=&quot;什麼是-string-字串-什麼是-symbol-符號&quot;&gt;什麼是 String (字串) 什麼是 Symbol (符號)?&lt;/h2&gt; &lt;p&gt;&lt;strong&gt;在 Ruby 裡, String (字串), Symbol (符號) 都是 Class (類別) 的一種。下面使用&lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt;這個方法驗證。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;String:&lt;/strong&gt; A string...</description>
-        <pubDate>Fri, 14 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/14/string-symbol.html</link>
-        <guid isPermaLink="true">/programming/2020/02/14/string-symbol.html</guid>
-        
-        <category>Ruby</category>
-        
-        
-        <category>Programming</category>
-        
-      </item>
+    <title>賈蓋先 の Tech Blog</title>
+    <description>Usually about programming, life or anything else that can described in words.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Blogging with Jekyll on Github Pages</title>
-        <description>&lt;p&gt;This blog is built by Jekyll on Github Pages. What is &lt;strong&gt;Jekyll?&lt;/strong&gt; Jekyll is a static website generator, which can transform plain text into static site without a database and...</description>
-        <pubDate>Wed, 12 Feb 2020 18:00:00 +0800</pubDate>
-        <link>/programming/2020/02/12/blogging-with-jekyll.html</link>
-        <guid isPermaLink="true">/programming/2020/02/12/blogging-with-jekyll.html</guid>
-        
-        <category>jekyll</category>
-        
-        
-        <category>Programming</category>
-        
+        <description>
+          
+          This blog is built by Jekyll on Github Pages. What is Jekyll? Jekyll is a static website generator, which can transform plain text into static site without a database and a server. Sounds great, right?! Jekyll is written by Ruby, so it’s literally a Ruby gem, like Rails, Sinatra… and...
+        </description>
+        <pubDate>Wed, 12 Feb 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020-02-12-blogging-with-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-02-12-blogging-with-jekyll/</guid>
+      </item>
+    
+      <item>
+        <title>A spark</title>
+        <description>
+          
+          A single spark can start a prairie fire Just 3 months ago, I was so called a ‘Muggle’ in programming. Then, I had a chance to get to learn my first programming language Ruby in Astro Camp, a full-stack coding bootcamp. At the end of the day, we as a...
+        </description>
+        <pubDate>Tue, 11 Feb 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020-02-11-a-spark/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-02-11-a-spark/</guid>
+      </item>
+    
+      <item>
+        <title>Test markdown</title>
+        <description>
+          Each post also has a subtitle - 
+          You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc. Here is some bold text Here is a...
+        </description>
+        <pubDate>Sat, 28 Feb 2015 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2015-02-28-test-markdown/</link>
+        <guid isPermaLink="true">http://localhost:4000/2015-02-28-test-markdown/</guid>
       </item>
     
   </channel>
