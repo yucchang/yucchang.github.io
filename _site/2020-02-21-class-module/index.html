@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Class</title>
+
+  <meta name="author" content="yucchang" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Class" />
+  
+
+   
+  <meta property="og:description" content="在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼? 接下來會花 2-3 篇介紹實現物件導向程式設計的重要元素：類別(Class)、物件(Object)、模組(Module) Class 物件(Object) = 狀態(State) + 行為(Behavior) 那物件跟類別的關聯又是如何？ Object has class: 首先，我們可以對物件使用 class 或是 is_a? 判斷屬哪種類別， &quot;string no.1&quot;.class # =&amp;gt; String [2, 5, 6].class # =&amp;gt; Array &quot;string no.1&quot;.is_a?(String) # =&amp;gt; true [2, 5, 6].is_a?(Array) # =&amp;gt; true Class creates object: 在我們將 &quot;string...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2020-02-21-class-module/" />
+  <link rel="canonical" href="http://localhost:4000/2020-02-21-class-module/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Class" />
+  
+
+  
+  <meta name="twitter:description" content="在前幾篇都有提到 Ruby 是物件導向程式語言 (Object-oriented programming)。一直提到物件導向，但説到底物件在程式世界到底是什麼? 接下來會花 2-3 篇介紹實現物件導向程式設計的重要元素：類別(Class)、物件(Object)、模組(Module) Class 物件(Object) = 狀態(State) + 行為(Behavior) 那物件跟類別的關聯又是如何？ Object has class: 首先，我們可以對物件使用 class 或是 is_a? 判斷屬哪種類別， &quot;string no.1&quot;.class # =&amp;gt; String [2, 5, 6].class # =&amp;gt; Array &quot;string no.1&quot;.is_a?(String) # =&amp;gt; true [2, 5, 6].is_a?(Array) # =&amp;gt; true Class creates object: 在我們將 &quot;string...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="https://yucchang.github.io">Author's home</a></li></ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Class</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on February 21, 2020</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>在前幾篇都有提到 Ruby 是<strong>物件導向程式語言 (Object-oriented programming)</strong>。一直提到<strong>物件導向</strong>，但説到底<strong>物件</strong>在程式世界到底是什麼?</p>
+
+<p>接下來會花 2-3 篇介紹實現物件導向程式設計的重要元素：<strong>類別(Class)</strong>、<strong>物件(Object)</strong>、<strong>模組(Module)</strong></p>
+
+<h2 id="class">Class</h2>
+
+<p><strong>物件(Object) = 狀態(State) + 行為(Behavior)</strong></p>
+
+<p>那物件跟類別的關聯又是如何？</p>
+
+<h4 id="object-has-class">Object has class:</h4>
+
+<p>首先，我們可以對物件使用 <code class="highlighter-rouge">class</code> 或是 <code class="highlighter-rouge">is_a?</code> 判斷屬哪種類別，</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"string no.1"</span><span class="p">.</span><span class="nf">class</span> <span class="c1"># =&gt; String</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">].</span><span class="nf">class</span> <span class="c1"># =&gt; Array</span>
+
+<span class="s2">"string no.1"</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">String</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
+</code></pre></div></div>
+
+<h4 id="class-creates-object">Class creates object:</h4>
+
+<p>在我們將 <code class="highlighter-rouge">"string no.1"</code> 輸入的時候，其實是 Ruby String 類別內建的 <code class="highlighter-rouge">new</code> 方法產生一個 <code class="highlighter-rouge">"string no.1"</code>實體。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">String</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"string no.1"</span><span class="p">)</span> <span class="c1"># =&gt; "string no.1"</span>
+</code></pre></div></div>
+
+<p>生活化一點的就像是龍哥[為你自己學 Ruby on Rails]提到的，雞蛋糕烤盤跟各造型雞蛋糕的例子。烤盤就是<strong>類別(Class)</strong>，將原料倒進去，翻轉個幾下就能做出又香又具各種造型的雞蛋糕，不管是皮卡丘、海綿寶寶的雞蛋糕在物件導向程式中都稱為<strong>實體(Instance)</strong>。</p>
+
+<h3 id="how-to-define-class">How to Define Class?</h3>
+<p>要定義類別起手式就是使用 <code class="highlighter-rouge">class</code>，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>定義一個類別 <code class="highlighter-rouge">Pikachu</code>。再來，我們要賦予皮卡丘『們』一些招式。</p>
+
+<p><strong>小知識：</strong> 皮卡丘屬於群體，不是只有小智旁邊那隻皮卡丘。</p>
+
+<p><img src="/img/pikachu.png" alt="pikachu" />
+（你在開玩笑嗎，這不是同一隻皮卡丘角色扮演）</p>
+
+<p>皮卡丘s 會有一些招式(Behaviors)，在 Ruby 我們稱方法(Methods)，使用 <code class="highlighter-rouge">def</code> 定義, 比如：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+<span class="o">...</span>
+  <span class="k">def</span> <span class="nf">thunderbolt</span>
+    <span class="nb">puts</span> <span class="s2">"pikachuuuuuuu"</span>
+  <span class="k">end</span>
+<span class="o">...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>這樣子，皮卡丘s 就學會 <code class="highlighter-rouge">thunderbolt</code> 十萬伏特了。所以皮卡丘群體裡的皮卡丘就都會使用十萬伏特了。</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Ryan</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">Ryan</span><span class="p">.</span><span class="nf">thunderbolt</span> <span class="c1"># =&gt; pikachuuuuuuu</span>
+
+<span class="no">Aminu</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">Aminu</span><span class="p">.</span><span class="nf">thunderbolt</span> <span class="c1"># =&gt; pikachuuuuuuu</span>
+</code></pre></div></div>
+
+<p>使用 <code class="highlighter-rouge">new</code> 方法，可以從皮卡丘類別中產生一隻新的皮卡丘，一個實體(instance)。而新生的皮卡丘都能使用在類別裡賦予的十萬伏特。</p>
+
+<p>在 Ruby 裡使用方法，就很像一個我們都很熟悉的畫面是，小智在對皮卡丘説：『皮卡丘，使出十萬伏特！』，皮卡丘回應：『 Pikachuuuuuuu 』，同時使出十萬伏特。</p>
+
+<p><strong>大木博士：類別名稱一定要是常數，命名慣例上以 <code class="highlighter-rouge">CamelCase</code> 駝峰式命名。方法與變數名稱則使用 <code class="highlighter-rouge">snake_case</code>蛇式命名為慣例。</strong></p>
+
+<h4 id="initialize三分天註定">Initialize(三分天註定)</h4>
+<p>假設要讓一隻新生的皮卡丘，出生就有名字、性別，在 <code class="highlighter-rouge">Pikachu</code>類別裡設定一個 初始化(Initialize)方法，再來 <code class="highlighter-rouge">new</code> 的時候設定名字、性別作為參數(argument)。但這樣還不足夠讓皮卡丘出生就有名字、性別。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@gender</span> <span class="o">=</span> <span class="n">gender</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Ryan"</span><span class="p">,</span> <span class="s2">"Male"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>設定好參數傳進去，<code class="highlighter-rouge">initialize</code> 方法裡必須設定 <code class="highlighter-rouge">@name</code>, <code class="highlighter-rouge">@gender</code> 等實體變數(instance variables)去接這兩組參數。</p>
+
+<p>現在 Ryan 知道他的名字跟性別了，但當你問雷恩：『請問你的性別是？』，雷恩卻回答不出來(笑)。為什麼？記得剛剛提到小智可以讓皮卡丘使用十萬伏特，是因為我們為 <code class="highlighter-rouge">Pikachu</code>類別賦予了 <code class="highlighter-rouge">thunderbolt</code>招式(Method)嗎？</p>
+
+<p>同理，要讓 Ryan 能夠回答自己的性別，我們還需要賦予 <code class="highlighter-rouge">Pikachu</code> 這個行為，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@gender</span> <span class="o">=</span> <span class="n">gender</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">gender</span>
+    <span class="vi">@gender</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="n">new_name</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">pikachu01</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Ryan"</span><span class="p">)</span>
+<span class="n">pikachu01</span><span class="p">.</span><span class="nf">gender</span> <span class="o">=</span> <span class="no">Male</span>
+</code></pre></div></div>
+
+<p>這樣一來，我們就能從外部讀取實體的屬性(attributes)名字、性別了。</p>
+
+<p>但這樣似乎缺乏彈性，在 <code class="highlighter-rouge">new</code> 實體時，就必須決定各項屬性，且無法再更改。(就真的什麼都天註定了)</p>
+
+<p>舉個實際例子來說，一個網站，註冊成為使用者後，後續使用者應該可以再更改密碼，作法是設定 <code class="highlighter-rouge">password=(new_password)</code>。這邊的例子以 <code class="highlighter-rouge">name=(new_name)</code> 讓外部可以再設定名字這項屬性，這時我們就可以替 Ryan 改名了。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pikachu01</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Ryan"</span><span class="p">)</span>
+<span class="n">pikachu01</span><span class="p">.</span><span class="nf">name</span><span class="p">(</span><span class="s2">"Kai"</span><span class="p">)</span>
+<span class="n">pikachu01</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; Kai</span>
+</code></pre></div></div>
+
+<p>如果有理解上述的慨念，可以試著找找下面範例有什麼瑕疵</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@passowrd</span> <span class="o">=</span> <span class="n">password</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">name</span>
+    <span class="vi">@name</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">password</span>
+    <span class="vi">@password</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="n">new_name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="n">new_name</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>答：以這樣設定，使用者只能更改名字，而無法再更改個人密碼。</p>
+
+<p>不過通常 <code class="highlighter-rouge">User</code> 不會只有 name, password 這兩項屬性，如果每項屬性都要這樣才能設定、讀取，程式碼僅不是會落落長？</p>
+
+<p>所以 Ruby 提供了 <code class="highlighter-rouge">attr_reader</code>, <code class="highlighter-rouge">attr_writer</code>, <code class="highlighter-rouge">attr_accessor</code> 方法讓程式碼能更簡潔，使用這些方法來改寫看看吧！</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">User</span>
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:password</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+    <span class="vi">@password</span> <span class="o">=</span> <span class="n">password</span>
+  <span class="k">end</span>  
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">attr_reader</code> 作用是讓屬性可以讀取，<code class="highlighter-rouge">attr_writer</code> 讓屬性可以設定，而 <code class="highlighter-rouge">attr_accessor</code> 則綜合二者使屬性可讀取、設定。</p>
+
+<hr />
+<h4 id="scope-of-variables">Scope of Variables</h4>
+<p>設定實體變數(instance variables)，<code class="highlighter-rouge">@name</code>, <code class="highlighter-rouge">@password</code> 的目的是可以在 <code class="highlighter-rouge">User</code> 裡反覆使用，但記得 Scope 僅限於 <code class="highlighter-rouge">User</code>，那為什麼不用區域變數(local variables)？因為區域變數存取的範圍更限縮。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">number</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">number</span> <span class="c1"># =&gt; 2</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+  <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+<span class="n">num</span> <span class="c1"># =&gt; NameError (undefined local variable or method 'number')</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+  <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+<span class="n">num</span> <span class="c1"># =&gt; ?</span>
+<span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; ?</span>
+</code></pre></div></div>
+
+<p>想像 <code class="highlighter-rouge">def...end</code> 是一堵牆，區域變數(local variables)無法在牆外生存，Ruby 在 <code class="highlighter-rouge">def...end</code> 外找不到，所以回傳 <code class="highlighter-rouge">undefined local variable</code>。</p>
+
+<p>以這樣的設定，在 <code class="highlighter-rouge">add(2)</code> 就會去找 <code class="highlighter-rouge">add</code>方法，參數指定給 <code class="highlighter-rouge">add</code> 方法的區域變數 <code class="highlighter-rouge">num</code>。</p>
+
+<p>而當我們輸入 <code class="highlighter-rouge">num</code> 時， Ruby 自然就會去找到在牆外的 <code class="highlighter-rouge">num = 1</code>，以此證明區域變數的作用範圍。</p>
+
+<h4 id="instance-method--class-method">Instance Method &amp; Class Method</h4>
+<p>根據作用的對象不同，Ruby 又分為實體方法或類別方法。照字面來看，實體方法作用對象為實體(instance)本身，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ryan</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Ryan"</span><span class="p">)</span>
+<span class="n">ryan</span><span class="p">.</span><span class="nf">thunderbolt</span>
+</code></pre></div></div>
+
+<p>在這邊我們是以 <code class="highlighter-rouge">ryan</code> 實體為對象發送訊息『使出十萬伏特！』</p>
+
+<p>在 Rails Controller，我們常見到：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span>  <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@books</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">all</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>這裡 <code class="highlighter-rouge">all</code> 作用對象明顯為 <code class="highlighter-rouge">Book</code>類別。</p>
+
+<p>要定義類別方法實際上有有幾種方式，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1</span>
+<span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">all</span>
+    <span class="o">...</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># 2</span>
+<span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+    <span class="k">def</span> <span class="nf">all</span>
+     <span class="o">...</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># 3</span>
+<span class="k">class</span> <span class="nc">Pikachu</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">def</span> <span class="nc">Pikachu</span><span class="o">.</span><span class="nf">all</span>
+  <span class="o">...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>在需要設定許多類別方法時，第二個方法或許更適合。</p>
+
+<h4 id="access-control">Access Control</h4>
+<p>Ruby 有三種可以控制方法的存取，分別為 <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code>。沒特別限制的方法就會是 <code class="highlighter-rouge">public</code> 可以直接存取， 如果我們使用 <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code> 把剛剛的範例改成這樣：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="kp">protected</span>
+  <span class="k">def</span> <span class="nf">quick_attack</span>
+    <span class="nb">puts</span> <span class="s2">"pikaaa"</span>  
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+  <span class="k">def</span> <span class="nf">thunderbolt</span>
+    <span class="nb">puts</span> <span class="s2">"pikachuuuuuuu"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>你會發現現在不管怎麼求皮卡丘使用 <code class="highlighter-rouge">quick_attach</code> 或是 <code class="highlighter-rouge">thunderbolt</code> 都沒有用，取而代之的是 <code class="highlighter-rouge">NoMethodError</code> 彷彿遺忘了這些招式。不管是 <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code> 都限制了方法從外部使用。</p>
+
+<p><code class="highlighter-rouge">private</code>:</p>
+<ol>
+  <li>控制方法僅能於作為同類別內部使用。</li>
+  <li>不能有接收者(receiver)。還記得我們使用招式時的指令嗎？對皮卡丘說：『皮卡丘，使出十萬伏特！』。這段指令中，皮卡丘就是接收者，不過現在皮卡丘招式摳不出來，要被小茂打敗了，怎麼辦？</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">class</span> <span class="nc">Pikachu</span>  
+  <span class="k">def</span> <span class="nf">combo</span>
+    <span class="nb">puts</span> <span class="s2">"discharge"</span>
+    <span class="n">thunderbolt</span>   
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+  <span class="k">def</span> <span class="nf">thunderbolt</span>
+    <span class="nb">puts</span> <span class="s2">"pikachuuuuuuu"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">pikachu</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">pikachu</span><span class="p">.</span><span class="nf">thunderbolt</span> <span class="c1"># =&gt; NoMethodError</span>
+<span class="n">pikachu</span><span class="p">.</span><span class="nf">combo</span>
+<span class="o">=&gt;</span> <span class="n">discharge</span>
+<span class="o">=&gt;</span> <span class="n">pikachuuuuuuu</span>
+</code></pre></div></div>
+
+<p>在不違反這兩項條件下，使用 <code class="highlighter-rouge">public</code> 的 <code class="highlighter-rouge">combo</code>技讓皮卡丘充電完後，再使用十萬伏特。(原來是沒充電啊！) - 題外話：小時候玩被小茂打敗就會特別 7pupu，可能因為他太唱秋？</p>
+
+<p>實際使用 Rails 在開發過程，我們一定會使用到的作法：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BooksController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="o">...</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@book</span> <span class="o">=</span> <span class="no">Book</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">book_params</span><span class="p">)</span>
+    <span class="k">if</span> <span class="vi">@book</span><span class="p">.</span><span class="nf">save</span>
+      <span class="n">redirect_to</span> <span class="n">admin_books_path</span>
+    <span class="k">else</span>
+      <span class="n">render</span> <span class="ss">:new</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  <span class="o">...</span>
+  <span class="kp">private</span>
+  <span class="k">def</span> <span class="nf">book_params</span>
+    <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:book</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:price</span><span class="p">,</span> <span class="ss">:author</span><span class="p">)</span>
+  <span class="k">end</span>  
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>會設定 <code class="highlighter-rouge">book_params</code> 為 <code class="highlighter-rouge">private</code> 方法的目的在於：<code class="highlighter-rouge">book_params</code> 用於檢查使用者輸入的資料，避免被不預期的資料傳入影響資料庫，基於安全性，我們將此方法設為 <code class="highlighter-rouge">private</code>。(這個安全機制在 Rails 稱為 Strong Parameter)</p>
+
+<p>至於 <code class="highlighter-rouge">protected</code> 從外部一樣無法存取，但能在不同類別間使用(可以有 receiver, 但只能是自己 <code class="highlighter-rouge">self</code>)</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
+  <span class="kp">protected</span>
+  <span class="k">def</span> <span class="nf">shake_tail</span>
+    <span class="nb">puts</span> <span class="s2">"shakeshack"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Pichu</span> <span class="o">&lt;</span> <span class="no">Pikachu</span>
+  <span class="k">def</span> <span class="nf">combo</span>
+    <span class="n">shake_tail</span>
+    <span class="n">quick_attack</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+  <span class="k">def</span> <span class="nf">quick_attack</span>
+    <span class="nb">puts</span> <span class="s2">"DPS 12"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">pichu</span> <span class="o">=</span> <span class="no">Pichu</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">pichu</span><span class="p">.</span><span class="nf">shake_tail</span> <span class="c1"># =&gt; NoMethodError</span>
+<span class="n">pichu</span><span class="p">.</span><span class="nf">combo</span>
+<span class="o">=&gt;</span> <span class="n">shakeshack</span>
+<span class="o">=&gt;</span> <span class="no">DPS</span> <span class="mi">12</span>
+</code></pre></div></div>
+
+<p>這裡的 <code class="highlighter-rouge">Pichu &lt; Pikachu</code> 是物件導向的繼承(Inheritance)，繼承的概念及運用會在討論物件導向時再提起。</p>
+
+<p><strong>大木博士：其實我們平常使用的 <code class="highlighter-rouge">puts</code> 也是 <code class="highlighter-rouge">private</code>方法喔！</strong></p>
+
+<p>很明顯的在使用 <code class="highlighter-rouge">puts</code> 時，前面並沒有作用對象(receiver)，屬於 <code class="highlighter-rouge">Object</code>類別的 <code class="highlighter-rouge">private</code>方法之一。試試看，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"privacy"</span> <span class="c1"># =&gt; privacy</span>
+<span class="nb">self</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">"privacy"</span> <span class="c1"># =&gt; NoMethodError</span>
+</code></pre></div></div>
+
+<p>接下來會繼續討論到<strong>模組(Module)</strong>。</p>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li><a href="https://railsbook.tw/chapters/08-ruby-basic-4.html">為你自己學 Ruby on Rails</a></li>
+  <li><a href="http://ruby-for-beginners.rubymonstas.org/writing_classes/methods.html">Rubymostas</a></li>
+  <li><a href="https://medium.com/@tjoye20/ruby-access-control-basics-public-vs-private-vs-protected-methods-7788b26e04a7">Ruby Access Control Basics: Public vs Private vs Protected methods</a></li>
+</ul>
+
+<h5 id="後話寫這篇很危險邊寫邊釐清觀念的過程中一不注意就飛太遠-但終究是分享學習紀錄後出現的好現象因不想篇幅太冗長閱讀友善有些觀念沒辦法一篇慨全">後話：寫這篇很危險，邊寫邊釐清觀念的過程中，一不注意就……飛太遠～ 但終究是分享學習紀錄後出現的好現象。因不想篇幅太冗長(閱讀友善)，有些觀念沒辦法一篇慨全。</h5>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#programming">programming</a>
+          
+            <a href="/tags#Ruby">Ruby</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Class&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-21-class-module%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-21-class-module%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2020-02-19-lambda-proc/" data-toggle="tooltip" data-placement="top" title="Lambda, Proc">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2020-02-25-module/" data-toggle="tooltip" data-placement="top" title="Module">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:justinyu711@gamil.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/yucchang" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/cyucheng_Justin" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      yucchang
+      &nbsp;&bull;&nbsp;
+      2020
+
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

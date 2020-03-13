@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Block</title>
+
+  <meta name="author" content="yucchang" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Block" />
+  
+
+   
+  <meta property="og:description" content="Block Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？ Block 指的是 Code block 程式碼區塊，以 { }, do...end 呈現。通常單行程式碼使用 { }, 多行則使用 do...end。 而在選擇使用 { }, do...end, 會影響程式執行的優先權，像是數學的先乘除後加減規則： p ([*1..10].map { |num| num * 2 }) # { } 優先權高，正常執行 { } 內容 p ([1..10].map) do |num| num * 2 end # 相反地，do...end...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2020-02-17-block/" />
+  <link rel="canonical" href="http://localhost:4000/2020-02-17-block/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Block" />
+  
+
+  
+  <meta name="twitter:description" content="Block Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？ Block 指的是 Code block 程式碼區塊，以 { }, do...end 呈現。通常單行程式碼使用 { }, 多行則使用 do...end。 而在選擇使用 { }, do...end, 會影響程式執行的優先權，像是數學的先乘除後加減規則： p ([*1..10].map { |num| num * 2 }) # { } 優先權高，正常執行 { } 內容 p ([1..10].map) do |num| num * 2 end # 相反地，do...end...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="https://yucchang.github.io">Author's home</a></li></ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Block</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on February 17, 2020</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="block">Block</h2>
+<p>Ruby 為物件導向程式語言，幾乎所有東西都是物件，但 Block 卻不是，那 Block 是什麼？</p>
+
+<p><strong>Block</strong> 指的是 Code block 程式碼區塊，以 <code class="highlighter-rouge">{ }</code>, <code class="highlighter-rouge">do...end</code> 呈現。通常單行程式碼使用 <code class="highlighter-rouge">{ }</code>, 多行則使用 <code class="highlighter-rouge">do...end</code>。</p>
+
+<p>而在選擇使用 <code class="highlighter-rouge">{ }</code>, <code class="highlighter-rouge">do...end</code>, 會影響程式執行的優先權，像是數學的先乘除後加減規則：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">p</span> <span class="p">([</span><span class="o">*</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">].</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">})</span>
+<span class="c1"># { } 優先權高，正常執行 { } 內容</span>
+
+<span class="nb">p</span> <span class="p">([</span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span><span class="p">].</span><span class="nf">map</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">end</span>
+<span class="c1"># 相反地，do...end 裡的程式碼不會被執行</span>
+</code></pre></div></div>
+
+<h2 id="how-to-call-block">How to call Block?</h2>
+
+<blockquote>
+  <blockquote>
+    <p>Matz: any method can be called with a block as an implicit argument. Inside the method, you can call the block using the <em>yield</em> keyword with a value.</p>
+  </blockquote>
+</blockquote>
+
+<p>Ruby 的阿爸：Block 可以當作隱式參數傳進任何方法。在方法裡使用 <code class="highlighter-rouge">yield</code> keyword 去呼叫 block。=&gt; Block sticks with method, may appear only in the source adjacent to a method call.</p>
+
+<h3 id="use-yield">Use <code class="highlighter-rouge">yield</code>:</h3>
+<p><strong><code class="highlighter-rouge">yield</code> 將執行權暫時交給 Block 執行</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">countdown</span>
+  <span class="nb">puts</span> <span class="mi">3</span>  
+  <span class="k">yield</span>      <span class="c1"># 先去執行 { puts 2 }, 回來繼續往下</span>
+  <span class="nb">puts</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="n">run_order</span> <span class="p">{</span> <span class="nb">puts</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="c1"># =&gt; 3</span>
+<span class="c1"># =&gt; 2</span>
+<span class="c1"># =&gt; 1</span>
+</code></pre></div></div>
+
+<p>好玩的是，你可以一直呼叫</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">countdown</span>
+  <span class="nb">puts</span> <span class="mi">3</span>  
+  <span class="k">yield</span>      
+  <span class="nb">puts</span> <span class="mi">1</span>
+  <span class="k">yield</span>
+<span class="k">end</span>
+
+<span class="n">run_order</span> <span class="p">{</span> <span class="nb">puts</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="c1"># =&gt; 3</span>
+<span class="c1"># =&gt; 2</span>
+<span class="c1"># =&gt; 1</span>
+<span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
+
+<p>就像是…</p>
+
+<p><img src="/img/yield.jpeg" alt="yield" class="center-block" /></p>
+
+<p>剛剛 Ruby 的阿爸其中有一段 ‘ <em>using <code class="highlighter-rouge">yield</code> with value</em> ‘：代表使用 <code class="highlighter-rouge">yield</code> 可以傳值(參數)給 Block，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pass</span>
+  <span class="k">yield</span> <span class="mi">24</span>
+  <span class="nb">puts</span> <span class="s2">"first down!"</span>
+<span class="k">end</span>
+
+<span class="n">pass</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> yard-pass"</span> <span class="p">}</span>
+<span class="c1"># =&gt; 24 yard-pass</span>
+<span class="c1"># =&gt; first down!</span>
+</code></pre></div></div>
+
+<p>就像解任務般：任務 <code class="highlighter-rouge">pass</code></p>
+<ol>
+  <li>一開始要去找 NPC <code class="highlighter-rouge">yield</code>，</li>
+  <li>NPC <code class="highlighter-rouge">yield</code>: 你拿著這個素材 <code class="highlighter-rouge">24</code> 先去完成 block 裡的內容，才能進行下一步。</li>
+  <li>你拿著素材 <code class="highlighter-rouge">24</code> 執行了 block 裡的內容 <code class="highlighter-rouge">puts "#{素材} yard-pass"</code></li>
+  <li>回過頭去執行 <code class="highlighter-rouge">puts "first down!"</code></li>
+  <li>Quest Clear!!</li>
+</ol>
+
+<p>那怎麼去驗證 NPC <code class="highlighter-rouge">yield</code> 有沒有唬爛? 使用 Ruby 內建方法 <code class="highlighter-rouge">block_given?</code>:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 使用 block_given?</span>
+<span class="k">def</span> <span class="nf">is_block</span>
+   <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>  <span class="c1"># return true then execute  </span>
+<span class="k">end</span>
+<span class="n">is_block</span> <span class="c1"># =&gt; nil</span>
+<span class="n">is_block</span> <span class="p">{</span> <span class="nb">p</span> <span class="s2">"You got me."</span> <span class="p">}</span> <span class="c1"># =&gt; You got me.</span>
+</code></pre></div></div>
+
+<h3 id="block-varaiables">Block Varaiables</h3>
+<p>上面提到可以將參數傳進 block，<code class="highlighter-rouge">{ |x| puts "#{x} yard-pass" }</code>, 這裡是這樣運作的：</p>
+
+<ol>
+  <li><code class="highlighter-rouge">x = parameter</code>, 將參數指定給區域變數 x (當然可以自定變數名稱)</li>
+  <li>put x in <code class="highlighter-rouge">||</code></li>
+  <li>如果是字串，使用 <code class="highlighter-rouge">#{x}</code> 將 x 傳入</li>
+</ol>
+
+<p>想想看這會印出什麼?</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="mi">5</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"x in block: </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="s2">"x out of the block: </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div></div>
+<p>The output is:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=&gt;</span> <span class="n">x</span> <span class="k">in</span> <span class="ss">block: </span><span class="mi">0</span>
+<span class="o">=&gt;</span> <span class="n">x</span> <span class="k">in</span> <span class="ss">block: </span><span class="mi">1</span>
+<span class="o">=&gt;</span> <span class="n">x</span> <span class="k">in</span> <span class="ss">block: </span><span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="n">x</span> <span class="k">in</span> <span class="ss">block: </span><span class="mi">3</span>
+<span class="o">=&gt;</span> <span class="n">x</span> <span class="k">in</span> <span class="ss">block: </span><span class="mi">4</span>
+<span class="o">=&gt;</span> <span class="n">x</span> <span class="n">out</span> <span class="n">of</span> <span class="n">the</span> <span class="ss">block: </span><span class="mi">10</span>
+</code></pre></div></div>
+
+<p>從上面可以觀察到，儘管一開始區域變數 x = 10 已經先設定好, 但 block 只找到自己的 block varaiable <code class="highlighter-rouge">|x|</code>，而最後一行才去找到 block 外面的 x = 10。</p>
+
+<h3 id="practical-examples-of-block">Practical examples of Block</h3>
+<p>最後再來看看幾個實例，</p>
+
+<p><strong>yield:</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">run_time</span>
+  <span class="no">Start</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span>
+  <span class="k">yield</span>
+  <span class="no">Time</span><span class="p">.</span><span class="nf">now</span> <span class="o">-</span> <span class="no">Start</span>
+<span class="k">end</span>
+
+<span class="n">run_time</span> <span class="p">{</span> <span class="s1">'a'</span> <span class="o">*</span> <span class="mi">10000000</span> <span class="p">}</span>
+</code></pre></div></div>
+<p>做一個方法 run_time：設定 Start 為現在的時間 =&gt; yield 會暫時去執行 block =&gt; 紀錄執行完的時間，並減去開始的時間 =&gt; 使用 run_time 方法並掛載 block</p>
+
+<p><strong>Lazy code:</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="ss">a: </span><span class="mi">1</span> <span class="p">}.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:a</span><span class="p">)</span> <span class="p">{</span> <span class="nb">p</span> <span class="s2">"no such value"</span> <span class="p">}</span> <span class="c1"># =&gt; 1</span>
+<span class="p">{</span> <span class="ss">a: </span><span class="mi">1</span> <span class="p">}.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:b</span><span class="p">)</span> <span class="p">{</span> <span class="nb">p</span> <span class="s2">"no such value"</span> <span class="p">}</span> <span class="c1"># =&gt; no such value</span>
+<span class="p">{</span> <span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="kp">nil</span> <span class="p">}.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:b</span><span class="p">)</span> <span class="p">{</span> <span class="nb">p</span> <span class="s2">"no such value"</span> <span class="p">}</span> <span class="c1"># =&gt; nil</span>
+</code></pre></div></div>
+
+<p>使用 fetch 方法抓 Hash 裡 <code class="highlighter-rouge">:a</code> 的值，如果沒有該值便會印出後面 <code class="highlighter-rouge">no such value</code>，比較像是設定 Default 的使用。(注意就算是 nil 也是有值)</p>
+
+<p><strong>callback:</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">http_request</span><span class="p">(</span><span class="o">&amp;</span><span class="n">on_complete</span><span class="p">)</span>
+<span class="c1"># ...</span>
+<span class="n">on_complete</span><span class="p">.</span><span class="nf">call</span>
+<span class="k">end</span>
+
+<span class="n">http_request</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"Done"</span> <span class="p">}</span>
+</code></pre></div></div>
+<p>最後就是將 block 實體化的例子了。</p>
+
+<p><strong>最一開始提到 Block 不是物件，但 Ruby 卻提供 Proc, Lambda 可以將 Block 物件化  ……哪泥!!</strong></p>
+
+<p>下篇將會解釋解釋物件化後的 Block。</p>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li><a href="https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/#Implicit_vs_Explicit_Blocks">RubyGuides</a></li>
+  <li><a href="http://rubylearning.com/satishtalim/ruby_blocks.html">Rubylearning.com</a></li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#programming">programming</a>
+          
+            <a href="/tags#Ruby">Ruby</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Block&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-17-block%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-17-block%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2020-02-13-string-symbol/" data-toggle="tooltip" data-placement="top" title="Compare Symbol to String">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2020-02-19-lambda-proc/" data-toggle="tooltip" data-placement="top" title="Lambda, Proc">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:justinyu711@gamil.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/yucchang" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/cyucheng_Justin" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      yucchang
+      &nbsp;&bull;&nbsp;
+      2020
+
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Logical Operators with Truthy & Falsey</title>
+
+  <meta name="author" content="yucchang" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Logical Operators with Truthy & Falsey" />
+  
+
+   
+  <meta property="og:description" content="Logical Operators 1. &amp;amp;&amp;amp;, and 只有兩個值皆為 true，才成立。 Ex: true &amp;amp;&amp;amp; true =&amp;gt; true, false &amp;amp;&amp;amp; true =&amp;gt; false 2. ||, or 只要有一個值為 true，就成立並回傳該值。 Ex: false || true =&amp;gt; true, true || false =&amp;gt; true 3. !, not 就是個唱反調的，如果該值為 Truthy，則回傳 false，反之亦然。 Ex: !true =&amp;gt; false, !nil =&amp;gt; true Truthy and Fasley...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2020-03-03-operators/" />
+  <link rel="canonical" href="http://localhost:4000/2020-03-03-operators/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Logical Operators with Truthy & Falsey" />
+  
+
+  
+  <meta name="twitter:description" content="Logical Operators 1. &amp;amp;&amp;amp;, and 只有兩個值皆為 true，才成立。 Ex: true &amp;amp;&amp;amp; true =&amp;gt; true, false &amp;amp;&amp;amp; true =&amp;gt; false 2. ||, or 只要有一個值為 true，就成立並回傳該值。 Ex: false || true =&amp;gt; true, true || false =&amp;gt; true 3. !, not 就是個唱反調的，如果該值為 Truthy，則回傳 false，反之亦然。 Ex: !true =&amp;gt; false, !nil =&amp;gt; true Truthy and Fasley...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="https://yucchang.github.io">Author's home</a></li></ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Logical Operators with Truthy & Falsey</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on March 3, 2020</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="logical-operators">Logical Operators</h2>
+<h3 id="1---and">1.  <code class="highlighter-rouge">&amp;&amp;</code>, and</h3>
+<p>只有兩個值皆為 true，才成立。</p>
+
+<p>Ex: <code class="highlighter-rouge">true &amp;&amp; true =&gt; true</code>, <code class="highlighter-rouge">false &amp;&amp; true =&gt; false</code></p>
+
+<h3 id="2---or">2.  <code class="highlighter-rouge">||</code>, or</h3>
+<p>只要有一個值為 true，就成立並回傳該值。</p>
+
+<p>Ex: <code class="highlighter-rouge">false || true =&gt; true</code>, <code class="highlighter-rouge">true || false =&gt; true</code></p>
+
+<h3 id="3---not">3.  <code class="highlighter-rouge">!</code>, not</h3>
+<p>就是個唱反調的，如果該值為 Truthy，則回傳 false，反之亦然。</p>
+
+<p>Ex: <code class="highlighter-rouge">!true =&gt; false</code>, <code class="highlighter-rouge">!nil =&gt; true</code></p>
+
+<h2 id="truthy-and-fasley-value">Truthy and Fasley value</h2>
+<p>接續上一篇 Ruby 中的 Truthy, Falsey value，試著回答看看以下的 code 執行會回傳什麼?</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">str</span> <span class="o">||</span> <span class="n">str</span><span class="p">.</span><span class="nf">length</span>
+</code></pre></div></div>
+
+<p>首先假定我們已經都知道邏輯運算子的用法，且對上一篇還有印象。</p>
+
+<p>Ruby 會是這樣判斷的：</p>
+<ol>
+  <li><code class="highlighter-rouge">str</code> 空字串是 Truthy value</li>
+  <li><code class="highlighter-rouge">||</code> 一者為 true，</li>
+  <li>既然 <code class="highlighter-rouge">str</code> 已為 true</li>
+  <li>便直接回傳 <code class="highlighter-rouge">str</code>，也就是 <code class="highlighter-rouge">""</code></li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">str</span> <span class="o">&amp;&amp;</span> <span class="n">str</span><span class="p">.</span><span class="nf">length</span>
+</code></pre></div></div>
+
+<ol>
+  <li>前面一樣為 Truthy value</li>
+  <li><code class="highlighter-rouge">&amp;&amp;</code> 二者須為 true</li>
+  <li><code class="highlighter-rouge">str</code> true，<code class="highlighter-rouge">str.length</code> true =&gt; 成立</li>
+  <li>空字串長度為 0</li>
+</ol>
+
+<p>參考 [這篇][“truthy” and “falsey” (or “falsy”) in Ruby] 的方法，建議進入 irb， 帶入參數自己玩看看，印象會更深刻。</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">and_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">&amp;&amp;</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">or_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">||</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">not_op</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+  <span class="o">!</span><span class="n">a</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>甚至讓回傳的結果更完整可以嘗試看看：</p>
+<h4 id="1--and">1. <code class="highlighter-rouge">&amp;&amp;</code>, and</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_and_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">return_value</span> <span class="o">=</span> <span class="n">and_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">return_value</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">#{</span><span class="n">b</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, is truthy"</span>
+  <span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">#{</span><span class="n">b</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, is falsey"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">print_and_op</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">?</span>
+</code></pre></div></div>
+
+<h4 id="2--or">2. <code class="highlighter-rouge">||</code>, or</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_or_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">return_value</span> <span class="o">=</span> <span class="n">or_op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">return_value</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> || </span><span class="si">#{</span><span class="n">b</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, truthy"</span>
+  <span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> || </span><span class="si">#{</span><span class="n">b</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, falsey"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">print_or_op</span><span class="p">(</span><span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">?</span>
+</code></pre></div></div>
+
+<h4 id="3--not">3. <code class="highlighter-rouge">!</code>, not</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_not_op</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+  <span class="n">return_value</span> <span class="o">=</span> <span class="n">not_op</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">return_value</span>
+    <span class="nb">puts</span> <span class="s2">"!</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, truthy"</span>
+  <span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"!</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">#{</span><span class="n">return_value</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="s2">, falsey"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">print_not_op</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">?</span>
+</code></pre></div></div>
+
+<p>這是基本中的基本，花一點時間加深印象絕對值得。至少不必像我一樣在面試時回答的支支唔唔，一方面心裡也心虛…共勉之。</p>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li><a href="http://ruby-for-beginners.rubymonstas.org/operators/logical.html">Logical operators</a></li>
+  <li><a href="https://gist.github.com/jfarmer/2647362">“truthy” and “falsey” (or “falsy”) in Ruby</a></li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#programming">programming</a>
+          
+            <a href="/tags#Ruby">Ruby</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Logical+Operators+with+Truthy+%26+Falsey&url=http%3A%2F%2Flocalhost%3A4000%2F2020-03-03-operators%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2020-03-03-operators%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2020-03-02-truthy-falsey/" data-toggle="tooltip" data-placement="top" title="Truthy & Falsey">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2020-03-06-rails-activestorage/" data-toggle="tooltip" data-placement="top" title="Rails 6.0.0 active_storage">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:justinyu711@gamil.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/yucchang" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/cyucheng_Justin" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      yucchang
+      &nbsp;&bull;&nbsp;
+      2020
+
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

@@ -13,12 +13,12 @@ facebook:
 
 github:
   name: "GitHub"
-  baseURL: "https://github.com/yucchang"
+  baseURL: "https://github.com/"
   icon: "fa-github"
 
 twitter:
   name: "Twitter"
-  baseURL: "https://twitter.com/cyucheng_Justin"
+  baseURL: "https://twitter.com/"
   icon: "fa-twitter"
 
 reddit:
@@ -28,12 +28,12 @@ reddit:
 
 email:
   name: "Email me"
-  baseURL: "mailto:justinyu711@gamil.com"
+  baseURL: "mailto:"
   icon: "fa-envelope"
 
 linkedin:
   name: "LinkedIn"
-  baseURL: "https://www.linkedin.com/in/yu-cheng-chang-a47a3914b/"
+  baseURL: "https://www.linkedin.com/in/"
   icon: "fa-linkedin"
 
 xing:

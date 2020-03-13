@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Lambda, Proc</title>
+
+  <meta name="author" content="yucchang" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Lambda, Proc" />
+  
+
+   
+  <meta property="og:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc: greeting =...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2020-02-19-lambda-proc/" />
+  <link rel="canonical" href="http://localhost:4000/2020-02-19-lambda-proc/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Lambda, Proc" />
+  
+
+  
+  <meta name="twitter:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc: greeting =...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="https://yucchang.github.io">Author's home</a></li></ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Lambda, Proc</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on February 19, 2020</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <blockquote>
+  <blockquote>
+    <p>The devil is in the details.</p>
+  </blockquote>
+</blockquote>
+
+<p>接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。</p>
+
+<p>開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="nb">puts</span> <span class="s2">"This is block"</span> <span class="p">}</span> <span class="c1"># =&gt; SyntaxError</span>
+
+<span class="c1"># 當然也無法指派給變數</span>
+<span class="n">block</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"This is block"</span> <span class="p">}</span> <span class="c1"># =&gt; SyntaxError</span>
+</code></pre></div></div>
+
+<p>驗完正身，可以準備將 block 物件化了。</p>
+
+<h2 id="proc-lambda-物化-物件化-block">Proc, Lambda <del>物化</del> 物件化 block</h2>
+<h3 id="proc">Proc:</h3>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">greeting</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"What up"</span> <span class="p">}</span> <span class="c1"># =&gt; #&lt;Proc:0x00007fa95315cf58@(irb):1&gt;</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="nb">proc</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"What up"</span><span class="p">}</span> <span class="c1"># =&gt; #&lt;Proc:0x00007fa954008570@(irb):2&gt;</span>
+</code></pre></div></div>
+
+<p>可以看到 block 經由 Proc 將後面的 block 物件化為 Proc 實體。那物件化之後要幹嘛? 當然是摳出來使用</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">greeting</span> <span class="o">=</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"What up, </span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">!"</span> <span class="p">}</span>
+
+<span class="n">greeting</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">)</span>
+<span class="n">greeting</span><span class="p">[</span><span class="s2">"Joe"</span><span class="p">]</span>
+<span class="n">greeting</span><span class="o">.</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">)</span>
+<span class="n">greeting</span><span class="p">.</span><span class="nf">=</span><span class="o">==</span> <span class="s2">"Joe"</span>
+<span class="n">greeting</span><span class="p">.</span><span class="nf">yield</span> <span class="s2">"Joe"</span>
+<span class="c1"># 以上的範例在摳 greeting 同時，又傳入了一個參數("Joe")</span>
+</code></pre></div></div>
+
+<h3 id="lambda">Lambda:</h3>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sasaya</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="s2">"sasaya + </span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span> <span class="c1"># =&gt; #&lt;Proc:0x00007fa95316a478@(irb):12 (lambda)&gt;</span>
+<span class="n">sasaya</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">n</span><span class="p">){</span> <span class="s2">"sasaya + </span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>  <span class="c1"># =&gt; #&lt;Proc:0x00007fa953179ab8@(irb):13 (lambda)&gt;</span>
+</code></pre></div></div>
+
+<p>從回傳值或使用 <code class="highlighter-rouge">class</code> 方法都可以得出物件化出來也是 Proc 實體，所以要檢查是不是 Lambda 可使用 <code class="highlighter-rouge">lambda?</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sasaya</span><span class="p">.</span><span class="nf">class</span> <span class="c1"># =&gt; Proc</span>
+<span class="n">sasaya</span><span class="p">.</span><span class="nf">lambda?</span> <span class="c1"># =&gt; true</span>
+</code></pre></div></div>
+
+<h2 id="lambda--proc-差異">Lambda &amp; Proc 差異</h2>
+<h4 id="1-對於參數的處理方式">1. 對於參數的處理方式：</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Proc</span>
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">|</span> <span class="s2">"x = </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y = </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+
+<span class="nb">p</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; x = 1, y = 2</span>
+<span class="nb">p</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; x = 1, y = nil  # 沒代入參數，只會回傳 nil</span>
+<span class="nb">p</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; x = 1, y = 2  # 多代入的，自動被忽略</span>
+
+<span class="c1"># Lambda</span>
+<span class="n">l</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">|</span> <span class="s2">"x = </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y = </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+
+<span class="n">l</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; x = 1, y = 2</span>
+<span class="n">l</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># =&gt; ArgumentError</span>
+<span class="n">l</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; ArgumentError</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>從回傳的訊息觀察到，Proc 對於接收的參數，多給沒給都不會回傳錯誤訊息，反正就是印啦! (回傳 <code class="highlighter-rouge">nil</code>)</p>
+  </li>
+  <li>
+    <p>反之，Lambda 對於接收到的參數會以一個蘿蔔一個坑的方式代入，如果不是預期的，就會回傳 <code class="highlighter-rouge">wrong number of arguments</code>。</p>
+  </li>
+</ul>
+
+<p>實際運用上，Lambda 也因為處理參數更為嚴謹的特性，所以我們常在 Rails Model 定義 Scope 時這樣使用：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># scopes</span>
+<span class="n">scope</span> <span class="ss">:available</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">on_sell: </span><span class="kp">true</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="s1">'list_price &gt; 0'</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>設定了一個 <code class="highlighter-rouge">:available</code> 的 scope, 條件是：1. 有上架 2. 售價大於 0。並且將 <code class="highlighter-rouge">available</code> 這方法應用於 Controller。</p>
+
+<h4 id="2-return-方式">2. Return 方式:</h4>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_lam</span>
+  <span class="o">-&gt;</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"exit from lambda"</span> <span class="p">}.</span><span class="nf">call</span>
+  <span class="k">return</span> <span class="s2">"exit from method"</span>
+<span class="k">end</span>
+
+<span class="n">test_lam</span> <span class="c1"># =&gt; exit from method</span>
+
+<span class="k">def</span> <span class="nf">test_pr</span>
+  <span class="nb">proc</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"exit from proc"</span><span class="p">}.</span><span class="nf">call</span>
+  <span class="k">return</span> <span class="s2">"exit from method"</span>
+<span class="k">end</span>
+
+<span class="n">test_pr</span> <span class="c1"># =&gt; exit from proc</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>Lambda return 的方式與 Method 方法一樣，會 exit the block 並繼續執行下一段 code。</p>
+  </li>
+  <li>
+    <p>而 Proc return 則直接中離這個方法，回傳 block 內容。</p>
+  </li>
+</ul>
+
+<p>試著推論會回傳什麼?</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">run_test</span>
+  <span class="nb">lambda</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"start"</span> <span class="p">}.</span><span class="nf">call</span>
+  <span class="nb">proc</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"rest"</span> <span class="p">}.</span><span class="nf">call</span>
+  <span class="k">return</span> <span class="s2">"finish"</span>
+<span class="k">end</span>
+
+<span class="n">run_test</span> <span class="c1"># =&gt; ?</span>
+</code></pre></div></div>
+
+<p>答案是: <code class="highlighter-rouge">=&gt; rest</code></p>
+
+<p>執行過程：首先呼叫 lambda，return “start” 後 =&gt; 回來 method body =&gt; 往下執行呼叫 proc，但 proc 不乖，直接就 return “rest” 把內容丟出來 =&gt; end</p>
+
+<h2 id="-是什麼"><code class="highlighter-rouge">&amp;</code> 是什麼?</h2>
+<p><strong>簡單一點的説，就是可以將 block, lambda, proc 之間作轉換，讓它們能像是 Anonymous function (匿名函式) 被運用。</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">block99</span> <span class="o">=</span> <span class="nb">proc</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in test"</span> <span class="p">}</span>  <span class="c1"># Proc.new</span>
+<span class="n">block99</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in the test"</span> <span class="p">}</span>  <span class="c1"># lambda</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block99</span><span class="p">)</span>
+  <span class="n">block99</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s2">"car"</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="c1"># 另一種寫法</span>
+<span class="k">def</span> <span class="nf">test</span>
+  <span class="k">yield</span><span class="p">(</span><span class="s2">"car"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># 兩種 callblock 方式一樣結果</span>
+<span class="nb">test</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block99</span><span class="p">)</span>
+<span class="c1"># =&gt; car in test</span>
+<span class="nb">test</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in test"</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; car in test</span>
+</code></pre></div></div>
+
+<ol>
+  <li>一開始先將 block 物件化成 Proc 實體，指派給 block99</li>
+  <li>將 block99 傳入 test 方法，test 方法裡使用 <code class="highlighter-rouge">.call</code> or <code class="highlighter-rouge">yield</code> 去將執行權給 block99，並順手給了個伴手禮 “car”</li>
+  <li>block99 拿到 “car”，指定給 x 變數，再從 <code class="highlighter-rouge">||</code> 拿出 x 執行後段程式碼</li>
+  <li>返回 test 方法</li>
+</ol>
+
+<p><strong>最後，要特別解釋兩種 callblock 方式：</strong></p>
+
+<ol>
+  <li><code class="highlighter-rouge">test(&amp;block99)</code> 是以 <code class="highlighter-rouge">&amp;</code> 將 block99 轉換為 block 掛在 test 方法後面</li>
+  <li><code class="highlighter-rouge">test do |x| ... end</code> 就是 test 方法直接接上 block，所以也不需要最一開始的 Proc 實體。(Block 篇有介紹到 <code class="highlighter-rouge">do...end</code> 也是 Block 形式。)</li>
+</ol>
+
+<hr />
+<p><strong>有趣的來了～ 除了轉換成 block，也可以將 block 轉換成 Proc 或 Lambda</strong></p>
+
+<p>在使用 Rails 開發時，或許對接著這行 code 似曾相似 <code class="highlighter-rouge">foo.map(&amp;:bar)</code>。</p>
+
+<p>揪竟為什麼會這樣寫呢?</p>
+
+<p>Ruby 的 Symbol, 其實有內建一個 <code class="highlighter-rouge">to_proc</code> 方法：[Ruby.doc]</p>
+
+<p><strong>Returns a Proc object which responds to the given method by sym.</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">).</span><span class="nf">collect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)</span>  <span class="c1">#=&gt; ["1", "2", "3"]</span>
+
+<span class="c1"># 可改寫成</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">).</span><span class="nf">collect</span> <span class="p">{</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">num</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ruby 會是這麼解讀: 對 (1..3) 使用 collect 方法，collect 方法會掛載定義好的 block，如果 <code class="highlighter-rouge">to_s</code> 還不是 Proc 實體，就實體物件化 <code class="highlighter-rouge">to_s</code>吧。</p>
+
+<p>如果要追溯 Symbol 的 <code class="highlighter-rouge">to_proc</code> 方法是如何運作的，可以找到這篇 <a href="https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby">Stackoverflow</a></p>
+
+<h2 id="to-thumbs-up">To Thumbs up</h2>
+<ul>
+  <li>Lambda, Proc 可以將原本不是物件的 block 實體化</li>
+  <li>Lambda return, 處理參數更像是 Ruby Method</li>
+  <li>而 <code class="highlighter-rouge">&amp;</code> 的出現讓 Block, Lambda, Proc 運用上更貼近 Anonymous function (匿名函式)</li>
+</ul>
+
+<h3 id="reference">Reference</h3>
+<ul>
+  <li>[Ruby.doc]</li>
+  <li>[What does mapname mean in Ruby]</li>
+  <li>[What do you call &amp;: operator in Ruby?]</li>
+</ul>
+
+<p><a href="https://www.rubydoc.info/stdlib/core/Symbol">Ruby.doc</a>
+<a href="https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby">What does mapname mean in Ruby</a>
+<a href="https://stackoverflow.com/questions/2259775/what-do-you-call-the-operator-in-ruby">What do you call &amp;: operator in Ruby?</a></p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#programming">programming</a>
+          
+            <a href="/tags#Ruby">Ruby</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Lambda%2C+Proc&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-19-lambda-proc%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2020-02-19-lambda-proc%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2020-02-17-block/" data-toggle="tooltip" data-placement="top" title="Block">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2020-02-21-class-module/" data-toggle="tooltip" data-placement="top" title="Class">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:justinyu711@gamil.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/yucchang" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/cyucheng_Justin" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      yucchang
+      &nbsp;&bull;&nbsp;
+      2020
+
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

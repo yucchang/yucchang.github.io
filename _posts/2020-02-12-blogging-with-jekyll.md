@@ -9,7 +9,7 @@ This blog is built by Jekyll on Github Pages. What is **Jekyll?** Jekyll is a st
 ## Create a new repo on Github
 First, you'll need to create a new repository on Github by clicking the "+" beside your avatar, and hit "New Repository". Fillout the repository name by choosing it wisely. Normally we use username.github.io for the repository name.
 
-When I say *Normally*, I mean **Should**. : )
+When I say **Normally**, but I mean **Should**. : )
 
 For example, I use *yucchang.github.io* as my username is yucchang.
 
@@ -33,7 +33,7 @@ Now, you can choose either by building up your site from the very beginning or b
 ### If you decide to build your one and only blog:
 1. Run `jekyll new my-site`
 2. `$ cd my-site`
-3. `$ bundle exec jekyll serve`
+3. `$ bundle exec jekyll server`
 4. Browse to http://localhost:4000. You are able to see the prototype of you site.
 5. You can customized your site by specified the options in `_config.yml` under the root directory. Look up for more details on [Jekyll.com]
 

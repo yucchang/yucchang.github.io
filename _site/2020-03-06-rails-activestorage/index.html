@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Rails 6.0.0 active_storage</title>
+
+  <meta name="author" content="yucchang" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Rails 6.0.0 active_storage" />
+  
+
+   
+  <meta property="og:description" content="前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。 What’s the Problem? 現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。 問題呼之欲出，keyword 就是 Rails 6.0.0 以及 上傳多個檔案。簡而言之就是 Rails 6.0 ActiveStorage has_many_attached 情況下，使用 update 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。 それはまずいね！(真是太糟糕了~) 小腦補 - ActiveStorage 是 Rails 5.2 後，Rails 支援檔案上傳的功能。可以將檔案上傳至 Google Could Storage, Amazon S3, Microsoft Azure Storage 等雲端儲存服務，也可以在開發或測試環境中搭配 local based-disk service 使用。 The Process 從 Github Rails 可以查到在討論...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2020-03-06-rails-activestorage/" />
+  <link rel="canonical" href="http://localhost:4000/2020-03-06-rails-activestorage/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Rails 6.0.0 active_storage" />
+  
+
+  
+  <meta name="twitter:description" content="前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。 What’s the Problem? 現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。 問題呼之欲出，keyword 就是 Rails 6.0.0 以及 上傳多個檔案。簡而言之就是 Rails 6.0 ActiveStorage has_many_attached 情況下，使用 update 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。 それはまずいね！(真是太糟糕了~) 小腦補 - ActiveStorage 是 Rails 5.2 後，Rails 支援檔案上傳的功能。可以將檔案上傳至 Google Could Storage, Amazon S3, Microsoft Azure Storage 等雲端儲存服務，也可以在開發或測試環境中搭配 local based-disk service 使用。 The Process 從 Github Rails 可以查到在討論...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/avatar-icon.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/aboutme">About Me</a></li>
+          <li><a href="https://yucchang.github.io">Author's home</a></li></ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/avatar-icon.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Rails 6.0.0 active_storage</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on March 6, 2020</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p>前陣子在做某公司初試題目，收到題目時還很開心題目類似自己練習過的小專案。壓根沒想到會碰到一點小麻煩。不過既然現在能輕描淡寫的寫文章紀錄下來，就表示問題最終是解決了，也有一點心得。</p>
+
+<h2 id="whats-the-problem">What’s the Problem?</h2>
+<p>現在回想，不知是自己想太多還是該公司出此題目的小用心? 題目要求使用 Rails 6.0.0 以上版本，且必須實作可以上傳多張圖檔功能。</p>
+
+<p>問題呼之欲出，keyword 就是 <strong>Rails 6.0.0</strong> 以及 <strong>上傳多個檔案</strong>。簡而言之就是 Rails 6.0 ActiveStorage <code class="highlighter-rouge">has_many_attached</code> 情況下，使用 <code class="highlighter-rouge">update</code> 更新資料時，預設會覆蓋所有的原圖檔，再上傳新的圖檔。</p>
+
+<p>それはまずいね！(真是太糟糕了~)</p>
+
+<blockquote>
+  <blockquote>
+    <p>小腦補 - <a href="https://guides.rubyonrails.org/active_storage_overview.html">ActiveStorage</a> 是 Rails 5.2 後，Rails 支援檔案上傳的功能。可以將檔案上傳至 Google Could Storage, Amazon S3, Microsoft Azure Storage 等雲端儲存服務，也可以在開發或測試環境中搭配 local based-disk service 使用。</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="the-process">The Process</h2>
+<p>從 Github Rails 可以查到在討論 Rails 6.0.0 ActiveStorage, <code class="highlighter-rouge">has_many_attached</code> 相關 issues，我是透過這些討論抽絲剝繭找出解決方法</p>
+
+<h4 id="issue-36374-activestorage-has_many_attached-attachemnts-get-destroyed-when-subsequent-files-attached">Issue [#36374]: ActiveStorage has_many_attached attachemnts get destroyed when subsequent files attached</h4>
+<p>從 Issue 內容可推測，預期 <code class="highlighter-rouge">has_many_attached</code> 的檔案上傳，既有的檔案不會被上傳的新檔案覆蓋。</p>
+
+<p>不過，Rails 6.0.0.rc1 ActiveStorage 使用 <code class="highlighter-rouge">has_many_attached</code> 建立關聯，上傳多個檔案情況下，會先刪掉已存在的檔案，再重新上傳新的檔案。(rc = <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate">Release Candidate</a>)</p>
+
+<p><img src="/img/log.png" alt="log" /></p>
+
+<p>從 log 上可以看到執行 <code class="highlighter-rouge">product.update</code> 後，原有的檔案先被刪除，之後將新增的檔案存進資料庫並建立與 Product 的關聯。</p>
+
+<p>喔！有人早在 Beta 之後的 rc 就先發現並提出這個問題了，Great !!</p>
+
+<h4 id="pr-36716-preserve-existing-attachment-assignment-behavior-for-upgraded-apps">PR [#36716]: Preserve existing attachment assignment behavior for upgraded apps</h4>
+<p>這個 PR 則是 Rails Member 對此 issue 做的修正。</p>
+
+<p><strong>Commit message 提到：此 PR 只修正 Rails 5.2 升上 Rails 6.0 的應用程式。</strong></p>
+
+<p><strong>使用 Rails 6.0 或更新版本的應用程式則維持 rc 版本，刪除既有的檔案後上傳新的。Rails 6.0 的應用程式，可使用 <code class="highlighter-rouge">#attach</code> 方法，即可避免上傳新檔案時，刪除原有檔案。</strong></p>
+
+<p>Got it!! 現在我們知道使用 <code class="highlighter-rouge">#attach</code> 絕對可行。<a href="https://github.com/rails/rails/tree/master/activestorage">rails/activestorage</a> 就有示範如何在建立 <code class="highlighter-rouge">has_many_attached</code> 之後使用 <code class="highlighter-rouge">#attach</code>。</p>
+
+<p>如果有興趣知道設定 <code class="highlighter-rouge">has_many_attached</code> 後的行為，建議進到 <code class="highlighter-rouge">/lib/active_storage/attached/model.rb/</code> 試著看看 source code，會發現裡面有 <code class="highlighter-rouge">purge</code> 方法。</p>
+
+<p>BTW, 使用 <code class="highlighter-rouge">purge</code> 可以刪除所有檔案。啊哈！現在我們理解為何 <code class="highlighter-rouge">has_many_attached</code> 會先刪除既有檔案了。</p>
+
+<h4 id="laziest-simplest-way"><del>Laziest</del> Simplest way</h4>
+<p>其實上面那些已是我在 Stackoverflow 上找到更 <del>偷懶</del>簡單的解決方法之後的事了。這篇 [Stackoverflow] 裡的留言除了也提到 #attach 方法外，還有一個大絕招……</p>
+
+<p>到 <code class="highlighter-rouge">application.rb</code> 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 <code class="highlighter-rouge">update</code> 便不會再將原有的檔案先刪除了。- 實在太簡單，以至於我用了之後有點不好意思。</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>在網路上的留言討論總是可以找到更多的訊息，雖然繞了一大圈，一開始看了很多看不大懂的東西。但印象非常深刻。總之，</p>
+
+<ol>
+  <li>Use <code class="highlighter-rouge">#attach</code></li>
+  <li>In <code class="highlighter-rouge">application.rb</code>, <code class="highlighter-rouge">config.active_storage.replace_on_assign_to_many = false</code></li>
+</ol>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://github.com/rails/rails/issues/36374">#36374</a></li>
+  <li><a href="https://github.com/rails/rails/pull/36716">#36716</a></li>
+  <li><a href="https://github.com/rails/rails/issues/36806">#36806</a></li>
+  <li><a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">Stackoverflow</a></li>
+  <li><a href="https://bloggie.io/@kinopyo/upgrade-guide-active-storage-in-rails-6">Upgrade Guide: ActiveStorage in Rails 6 and ImageProcessing</a></li>
+</ul>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#programming">programming</a>
+          
+            <a href="/tags#rails">rails</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Rails+6.0.0+active_storage&url=http%3A%2F%2Flocalhost%3A4000%2F2020-03-06-rails-activestorage%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2020-03-06-rails-activestorage%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2020-03-03-operators/" data-toggle="tooltip" data-placement="top" title="Logical Operators with Truthy & Falsey">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:justinyu711@gamil.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://github.com/yucchang" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/cyucheng_Justin" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://www.linkedin.com/in/yu-cheng-chang-a47a3914b" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      yucchang
+      &nbsp;&bull;&nbsp;
+      2020
+
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>
