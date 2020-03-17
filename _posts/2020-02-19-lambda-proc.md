@@ -51,7 +51,7 @@ sasaya.lambda? # => true
 ```
 
 ## Lambda & Proc 差異
-#### 1. 對於參數的處理方式：
+#### 1. 對於參數的處理
 ```ruby
 # Proc
 p = Proc.new { |x, y| "x = #{x}, y = #{y}" }
@@ -81,25 +81,25 @@ scope :available, -> { where(on_sell: true).where('list_price > 0') }
 設定了一個 `:available` 的 scope, 條件是：1. 有上架 2. 售價大於 0。並且將 `available` 這方法應用於 Controller。
 
 
-#### 2. Return 方式:
+#### 2. `return`
 ```ruby
-def test_lam
-  -> { puts "exit from lambda" }.call
-  return "exit from method"
+#Proc
+def return_from_proc
+  a = Proc.new { return 10 }.call
+  puts "This will never be printed."
 end
-
-test_lam # => exit from method
-
-def test_pr
-  proc { puts "exit from proc"}.call
-  return "exit from method"
-end
-
-test_pr # => exit from proc
 ```
-- Lambda return 的方式與 Method 方法一樣，會 exit the block 並繼續執行下一段 code。
 
-- 而 Proc return 則直接中離這個方法，回傳 block 內容。
+`return_from_proc` 將控制權交給 Proc 之後就要不回來了，Proc 直接回傳 10
+
+```ruby
+#Lambda
+def return_from_lambda
+  a = lambda { return 10 }.call
+  puts "The lambda returned #{a}, and this will be printed."
+end
+```
+`return_from_lambda` 將控制權交給 Lambda，回傳 10。 `return_from_lambda` 拿回控制權後，繼續執行下一行 code  
 
 試著推論會回傳什麼?
 ```ruby
@@ -112,9 +112,6 @@ end
 run_test # => ?
 ```
 
-答案是: `=> rest`
-
-執行過程：首先呼叫 lambda，return "start" 後 => 回來 method body => 往下執行呼叫 proc，但 proc 不乖，直接就 return "rest" 把內容丟出來 => end  
 
 ## `&` 是什麼?
 **簡單一點的説，就是可以將 block, lambda, proc 之間作轉換，讓它們能像是 Anonymous function (匿名函式) 被運用。**
@@ -149,14 +146,13 @@ end
 1. `test(&block99)` 是以 `&` 將 block99 轉換為 block 掛在 test 方法後面
 2. `test do |x| ... end` 就是 test 方法直接接上 block，所以也不需要最一開始的 Proc 實體。(Block 篇有介紹到 `do...end` 也是 Block 形式。)
 
----
 **有趣的來了～ 除了轉換成 block，也可以將 block 轉換成 Proc 或 Lambda**
 
 在使用 Rails 開發時，或許對接著這行 code 似曾相似 `foo.map(&:bar)`。
 
 揪竟為什麼會這樣寫呢?
 
-Ruby 的 Symbol, 其實有內建一個 `to_proc` 方法：[Ruby.doc]
+Ruby Symbol 其實有內建一個 `to_proc` 方法：
 
 **Returns a Proc object which responds to the given method by sym.**
 ```ruby
@@ -168,21 +164,21 @@ Ruby 的 Symbol, 其實有內建一個 `to_proc` 方法：[Ruby.doc]
 
 Ruby 會是這麼解讀: 對 (1..3) 使用 collect 方法，collect 方法會掛載定義好的 block，如果 `to_s` 還不是 Proc 實體，就實體物件化 `to_s`吧。
 
-如果要追溯 Symbol 的 `to_proc` 方法是如何運作的，可以找到這篇 [Stackoverflow](https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby)
+如果要追溯 Symbol 的 `to_proc` 方法是如何運作的，可以找到這篇 [stackoverflow](https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby)
 
 ## To Thumbs up
 - Lambda, Proc 可以將原本不是物件的 block 實體化
-- Lambda return, 處理參數更像是 Ruby Method
+- Lambda 在處理參數及使用 `return` 時的行為更接近 regular method
 - 而 `&` 的出現讓 Block, Lambda, Proc 運用上更貼近 Anonymous function (匿名函式)
 
 ### Reference
-- [Ruby.doc]
+- [Ruby.doc - Symbol]
 - [What does mapname mean in Ruby]
 - [What do you call &: operator in Ruby?]
 
 
 
 
-[Ruby.doc](https://www.rubydoc.info/stdlib/core/Symbol)
-[What does mapname mean in Ruby](https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby)
-[What do you call &: operator in Ruby?](https://stackoverflow.com/questions/2259775/what-do-you-call-the-operator-in-ruby)
+[Ruby.doc - Symbol]:(https://www.rubydoc.info/stdlib/core/Symbol)
+[What does mapname mean in Ruby]:(https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby)
+[What do you call &: operator in Ruby?]:(https://stackoverflow.com/questions/2259775/what-do-you-call-the-operator-in-ruby)
