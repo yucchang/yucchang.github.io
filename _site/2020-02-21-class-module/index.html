@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 - Learn to be greater." href="http://localhost:4000/feed.xml" />
 
   
 
@@ -115,7 +115,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -178,13 +178,13 @@
 
 <p>接下來會花 2-3 篇介紹實現物件導向程式設計的重要元素：<strong>類別(Class)</strong>、<strong>物件(Object)</strong>、<strong>模組(Module)</strong></p>
 
-<h2 id="class">Class</h2>
+<h1 id="class">Class</h1>
 
 <p><strong>物件(Object) = 狀態(State) + 行為(Behavior)</strong></p>
 
 <p>那物件跟類別的關聯又是如何？</p>
 
-<h4 id="object-has-class">Object has class:</h4>
+<h3 id="object-has-class">Object has class:</h3>
 
 <p>首先，我們可以對物件使用 <code class="highlighter-rouge">class</code> 或是 <code class="highlighter-rouge">is_a?</code> 判斷屬哪種類別，</p>
 
@@ -195,7 +195,7 @@
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
 </code></pre></div></div>
 
-<h4 id="class-creates-object">Class creates object:</h4>
+<h3 id="class-creates-object">Class creates object:</h3>
 
 <p>在我們將 <code class="highlighter-rouge">"string no.1"</code> 輸入的時候，其實是 Ruby String 類別內建的 <code class="highlighter-rouge">new</code> 方法產生一個 <code class="highlighter-rouge">"string no.1"</code>實體。</p>
 
@@ -329,7 +329,7 @@
 <p><code class="highlighter-rouge">attr_reader</code> 作用是讓屬性可以讀取，<code class="highlighter-rouge">attr_writer</code> 讓屬性可以設定，而 <code class="highlighter-rouge">attr_accessor</code> 則綜合二者使屬性可讀取、設定。</p>
 
 <hr />
-<h4 id="scope-of-variables">Scope of Variables</h4>
+<h3 id="scope-of-variables">Scope of Variables</h3>
 <p>設定實體變數(instance variables)，<code class="highlighter-rouge">@name</code>, <code class="highlighter-rouge">@password</code> 的目的是可以在 <code class="highlighter-rouge">User</code> 裡反覆使用，但記得 Scope 僅限於 <code class="highlighter-rouge">User</code>，那為什麼不用區域變數(local variables)？因為區域變數存取的範圍更限縮。</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">number</span> <span class="o">=</span> <span class="mi">2</span>
@@ -354,7 +354,7 @@
 
 <p>而當我們輸入 <code class="highlighter-rouge">num</code> 時， Ruby 自然就會去找到在牆外的 <code class="highlighter-rouge">num = 1</code>，以此證明區域變數的作用範圍。</p>
 
-<h4 id="instance-method--class-method">Instance Method &amp; Class Method</h4>
+<h3 id="instance-method--class-method">Instance Method &amp; Class Method</h3>
 <p>根據作用的對象不同，Ruby 又分為實體方法或類別方法。照字面來看，實體方法作用對象為實體(instance)本身，</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ryan</span> <span class="o">=</span> <span class="no">Pikachu</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Ryan"</span><span class="p">)</span>
 <span class="n">ryan</span><span class="p">.</span><span class="nf">thunderbolt</span>
@@ -399,7 +399,7 @@
 
 <p>在需要設定許多類別方法時，第二個方法或許更適合。</p>
 
-<h4 id="access-control">Access Control</h4>
+<h3 id="access-control">Access Control</h3>
 <p>Ruby 有三種可以控制方法的存取，分別為 <code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code>。沒特別限制的方法就會是 <code class="highlighter-rouge">public</code> 可以直接存取， 如果我們使用 <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">protected</code> 把剛剛的範例改成這樣：</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pikachu</span>
   <span class="kp">protected</span>

@@ -8,13 +8,13 @@ tags:	[programming, Ruby]
 
 接下來會花 2-3 篇介紹實現物件導向程式設計的重要元素：**類別(Class)**、**物件(Object)**、**模組(Module)**
 
-## Class
+# Class
 
 **物件(Object) = 狀態(State) + 行為(Behavior)**
 
 那物件跟類別的關聯又是如何？
 
-#### Object has class:
+### Object has class:
 
 首先，我們可以對物件使用 `class` 或是 `is_a?` 判斷屬哪種類別，
 
@@ -26,7 +26,7 @@ tags:	[programming, Ruby]
 [2, 5, 6].is_a?(Array) # => true
 ```
 
-#### Class creates object:
+### Class creates object:
 
 在我們將 `"string no.1"` 輸入的時候，其實是 Ruby String 類別內建的 `new` 方法產生一個 `"string no.1"`實體。
 
@@ -169,7 +169,7 @@ end
 `attr_reader` 作用是讓屬性可以讀取，`attr_writer` 讓屬性可以設定，而 `attr_accessor` 則綜合二者使屬性可讀取、設定。
 
 ---
-#### Scope of Variables
+### Scope of Variables
 設定實體變數(instance variables)，`@name`, `@password` 的目的是可以在 `User` 裡反覆使用，但記得 Scope 僅限於 `User`，那為什麼不用區域變數(local variables)？因為區域變數存取的範圍更限縮。
 
 ```ruby
@@ -195,7 +195,7 @@ add(2) # => ?
 
 而當我們輸入 `num` 時， Ruby 自然就會去找到在牆外的 `num = 1`，以此證明區域變數的作用範圍。
 
-#### Instance Method & Class Method
+### Instance Method & Class Method
 根據作用的對象不同，Ruby 又分為實體方法或類別方法。照字面來看，實體方法作用對象為實體(instance)本身，
 ```ruby
 ryan = Pikachu.new("Ryan")
@@ -243,7 +243,7 @@ end
 
 在需要設定許多類別方法時，第二個方法或許更適合。
 
-#### Access Control
+### Access Control
 Ruby 有三種可以控制方法的存取，分別為 `public`, `private`, `protected`。沒特別限制的方法就會是 `public` 可以直接存取， 如果我們使用 `private`, `protected` 把剛剛的範例改成這樣：
 ```ruby
 class Pikachu

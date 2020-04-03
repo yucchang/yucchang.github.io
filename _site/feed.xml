@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>賈蓋先 の Tech Blog</title>
-    <description>Usually about programming, life or anything else that can described in words.</description>
+    <title>賈蓋先</title>
+    <description>Learn to be greater.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
@@ -76,7 +76,7 @@
         <title>Lambda, Proc</title>
         <description>
           
-          The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc: greeting =...
+          The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中。這樣 Lambda, Proc 才有存在意義嘛！ { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError Proc, Lambda 物化 物件化 block Proc: greeting =...
         </description>
         <pubDate>Wed, 19 Feb 2020 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2020-02-19-lambda-proc/</link>

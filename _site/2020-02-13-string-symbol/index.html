@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 - Learn to be greater." href="http://localhost:4000/feed.xml" />
 
   
 
@@ -115,7 +115,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -201,7 +201,7 @@
 
 <h2 id="string-字串--symbol-符號-差別">String (字串) &amp; Symbol (符號) 差別?</h2>
 
-<h4 id="1-string-內容可以改變但-symbol-不行">1. String 內容可以改變，但 Symbol 不行</h4>
+<h3 id="1-string-內容可以改變但-symbol-不行">1. String 內容可以改變，但 Symbol 不行</h3>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 使用中括號填入數字 (index) 來取得字元</span>
 <span class="o">&gt;&gt;</span> <span class="s2">"cube"</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="o">=&gt;</span> <span class="s2">"u"</span>
@@ -221,7 +221,7 @@
 <span class="o">=&gt;</span> <span class="no">NoMethodError</span> <span class="p">(</span><span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`[]=' for :cube:Symbol)
 </span></code></pre></div></div>
 
-<h4 id="2-symbol-效能比較好">2. Symbol 效能比較好</h4>
+<h3 id="2-symbol-效能比較好">2. Symbol 效能比較好</h3>
 <ul>
   <li>以下以 <code class="highlighter-rouge">object_id</code> 實測。(<code class="highlighter-rouge">object_id</code> 代表物件在 Ruby 裡的 <code class="highlighter-rouge">id</code>，不同的物件想當然有不同 <code class="highlighter-rouge">id</code> 就像你跟我身份證號碼不一樣。)</li>
 </ul>
@@ -284,13 +284,13 @@
 </code></pre></div></div>
 
 <h2 id="symbol-特性及使用時機">Symbol 特性及使用時機</h2>
-<h4 id="symbol-特性">Symbol 特性:</h4>
+<h3 id="symbol-特性">Symbol 特性:</h3>
 <ol>
   <li>不可變更 (Immutable), object_id 有唯一性</li>
   <li>效能比 String 好</li>
 </ol>
 
-<h4 id="什麼時候該使用-symbol">什麼時候該使用 Symbol?</h4>
+<h3 id="什麼時候該使用-symbol">什麼時候該使用 Symbol?</h3>
 <p>適合拿來當作 Hash 中的 Key:</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">name: </span><span class="s2">"Rocky"</span><span class="p">,</span> <span class="ss">age: </span><span class="s2">"40"</span><span class="p">}</span>  
 <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">"Rocky"</span><span class="p">,</span> <span class="ss">:age</span> <span class="o">=&gt;</span> <span class="s2">"40"</span><span class="p">}</span>  

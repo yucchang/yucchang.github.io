@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 - Learn to be greater." href="http://localhost:4000/feed.xml" />
 
   
 
@@ -62,7 +62,7 @@
   
 
    
-  <meta property="og:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc: greeting =...">
+  <meta property="og:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中。這樣 Lambda, Proc 才有存在意義嘛！ { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError Proc, Lambda 物化 物件化 block Proc: greeting =...">
   
 
 
@@ -88,7 +88,7 @@
   
 
   
-  <meta name="twitter:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中， { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError 驗完正身，可以準備將 block 物件化了。 Proc, Lambda 物化 物件化 block Proc: greeting =...">
+  <meta name="twitter:description" content="The devil is in the details. 接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。 開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中。這樣 Lambda, Proc 才有存在意義嘛！ { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError # 當然也無法指派給變數 block = { puts &quot;This is block&quot; } # =&amp;gt; SyntaxError Proc, Lambda 物化 物件化 block Proc: greeting =...">
   
 
   
@@ -115,7 +115,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -182,14 +182,12 @@
 
 <p>接續上一篇，這篇將透過 Lambda, Proc 將 block 物件化，以及物件化之後帶來哪些好處，如何使用。</p>
 
-<p>開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中，</p>
+<p>開始之前我們先驗明正身：證明 block 不是物件，所以無法單獨存在 Ruby 中。這樣 Lambda, Proc 才有存在意義嘛！</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="nb">puts</span> <span class="s2">"This is block"</span> <span class="p">}</span> <span class="c1"># =&gt; SyntaxError</span>
 
 <span class="c1"># 當然也無法指派給變數</span>
 <span class="n">block</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"This is block"</span> <span class="p">}</span> <span class="c1"># =&gt; SyntaxError</span>
 </code></pre></div></div>
-
-<p>驗完正身，可以準備將 block 物件化了。</p>
 
 <h2 id="proc-lambda-物化-物件化-block">Proc, Lambda <del>物化</del> 物件化 block</h2>
 <h3 id="proc">Proc:</h3>
@@ -214,7 +212,7 @@
 <span class="n">sasaya</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">n</span><span class="p">){</span> <span class="s2">"sasaya + </span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>  <span class="c1"># =&gt; #&lt;Proc:0x00007fa953179ab8@(irb):13 (lambda)&gt;</span>
 </code></pre></div></div>
 
-<p>從回傳值或使用 <code class="highlighter-rouge">class</code> 方法都可以得出物件化出來也是 Proc 實體，所以要檢查是不是 Lambda 可使用 <code class="highlighter-rouge">lambda?</code></p>
+<p>從回傳值或使用 <code class="highlighter-rouge">class</code> 方法都可以得知物件化後也是 Proc 實體，所以要檢查是不是 Lambda 可使用 <code class="highlighter-rouge">lambda?</code></p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sasaya</span><span class="p">.</span><span class="nf">class</span> <span class="c1"># =&gt; Proc</span>
 <span class="n">sasaya</span><span class="p">.</span><span class="nf">lambda?</span> <span class="c1"># =&gt; true</span>
 </code></pre></div></div>
@@ -238,75 +236,75 @@
 
 <ul>
   <li>
-    <p>從回傳的訊息觀察到，Proc 對於接收的參數，多給沒給都不會回傳錯誤訊息，反正就是印啦! (回傳 <code class="highlighter-rouge">nil</code>)</p>
+    <p>從回傳的訊息觀察到，Proc 對於接收的參數，多給沒給都不會回傳錯誤訊息，反正就是印啦! 很隨便。</p>
   </li>
   <li>
     <p>反之，Lambda 對於接收到的參數會以一個蘿蔔一個坑的方式代入，如果不是預期的，就會回傳 <code class="highlighter-rouge">wrong number of arguments</code>。</p>
   </li>
 </ul>
 
-<p>實際運用上，Lambda 也因為處理參數更為嚴謹的特性，所以我們常在 Rails Model 定義 Scope 時這樣使用：</p>
+<p>實際運用上，Lambda 也因為處理參數更為嚴謹的特性，所以我們常在 Rails Model 定義 Scope 使用 Lambda：</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># scopes</span>
 <span class="n">scope</span> <span class="ss">:available</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">on_sell: </span><span class="kp">true</span><span class="p">).</span><span class="nf">where</span><span class="p">(</span><span class="s1">'list_price &gt; 0'</span><span class="p">)</span> <span class="p">}</span>
 </code></pre></div></div>
 
-<p>設定了一個 <code class="highlighter-rouge">:available</code> 的 scope, 條件是：1. 有上架 2. 售價大於 0。並且將 <code class="highlighter-rouge">available</code> 這方法應用於 Controller。</p>
+<p>設定了一個 <code class="highlighter-rouge">:available</code> 的 Scope, 範圍是<strong>有上架且售價大於0的商品</strong>。並且將 <code class="highlighter-rouge">available</code> 這 Scope 用於 Controller。</p>
 
 <h4 id="2-return">2. <code class="highlighter-rouge">return</code></h4>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Proc</span>
-<span class="k">def</span> <span class="nf">return_from_proc</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="nb">puts</span> <span class="s2">"result = </span><span class="si">#{</span><span class="n">pc</span><span class="p">.</span><span class="nf">call</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># =&gt; LocalJumpError(unexpected return)</span>
+
+<span class="k">def</span> <span class="nf">return_in_proc</span>
   <span class="n">a</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="p">}.</span><span class="nf">call</span>
   <span class="nb">puts</span> <span class="s2">"This will never be printed."</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">return_from_proc</code> 將控制權交給 Proc 之後就要不回來了，Proc 直接回傳 10</p>
+<p><code class="highlighter-rouge">return_in_proc</code> 將控制權交給 Proc 之後就要不回來了，Proc 直接回傳 10</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Lambda</span>
-<span class="k">def</span> <span class="nf">return_from_lambda</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="nb">puts</span> <span class="s2">"result = </span><span class="si">#{</span><span class="n">lam</span><span class="p">.</span><span class="nf">call</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># =&gt; result = 10</span>
+
+<span class="k">def</span> <span class="nf">return_in_lambda</span>
   <span class="n">a</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="p">}.</span><span class="nf">call</span>
-  <span class="nb">puts</span> <span class="s2">"The lambda returned </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">, and this will be printed."</span>
+  <span class="nb">puts</span> <span class="s2">"The lambda return </span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">, and this will be printed."</span>
 <span class="k">end</span>
 </code></pre></div></div>
-<p><code class="highlighter-rouge">return_from_lambda</code> 將控制權交給 Lambda，回傳 10。 <code class="highlighter-rouge">return_from_lambda</code> 拿回控制權後，繼續執行下一行 code</p>
-
-<p>試著推論會回傳什麼?</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">run_test</span>
-  <span class="nb">lambda</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"start"</span> <span class="p">}.</span><span class="nf">call</span>
-  <span class="nb">proc</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"rest"</span> <span class="p">}.</span><span class="nf">call</span>
-  <span class="k">return</span> <span class="s2">"finish"</span>
-<span class="k">end</span>
-
-<span class="n">run_test</span> <span class="c1"># =&gt; ?</span>
-</code></pre></div></div>
+<p><code class="highlighter-rouge">return_in_lambda</code> 將控制權交給 Lambda，回傳 10 並交回控制權。 <code class="highlighter-rouge">return_in_lambda</code> 拿回控制權後，繼續執行下一行 code</p>
 
 <h2 id="-是什麼"><code class="highlighter-rouge">&amp;</code> 是什麼?</h2>
 <p><strong>簡單一點的説，就是可以將 block, lambda, proc 之間作轉換，讓它們能像是 Anonymous function (匿名函式) 被運用。</strong></p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">block99</span> <span class="o">=</span> <span class="nb">proc</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in test"</span> <span class="p">}</span>  <span class="c1"># Proc.new</span>
-<span class="n">block99</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in the test"</span> <span class="p">}</span>  <span class="c1"># lambda</span>
+<span class="n">block99</span> <span class="o">=</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in test"</span> <span class="p">}</span>  <span class="c1"># lambda</span>
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block99</span><span class="p">)</span>
   <span class="n">block99</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s2">"car"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Holding..."</span>
 <span class="k">end</span>
 <span class="c1"># 另一種寫法</span>
 <span class="k">def</span> <span class="nf">test</span>
   <span class="k">yield</span><span class="p">(</span><span class="s2">"car"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Holding..."</span>
 <span class="k">end</span>
 
 <span class="c1"># 兩種 callblock 方式一樣結果</span>
 <span class="nb">test</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block99</span><span class="p">)</span>
-<span class="c1"># =&gt; car in test</span>
+
 <span class="nb">test</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> in test"</span>
+  <span class="nb">puts</span> <span class="s2">"Holding..."</span>
 <span class="k">end</span>
 <span class="c1"># =&gt; car in test</span>
+<span class="c1"># =&gt; Holding...</span>
 </code></pre></div></div>
 
 <ol>
-  <li>一開始先將 block 物件化成 Proc 實體，指派給 block99</li>
-  <li>將 block99 傳入 test 方法，test 方法裡使用 <code class="highlighter-rouge">.call</code> or <code class="highlighter-rouge">yield</code> 去將執行權給 block99，並順手給了個伴手禮 “car”</li>
-  <li>block99 拿到 “car”，指定給 x 變數，再從 <code class="highlighter-rouge">||</code> 拿出 x 執行後段程式碼</li>
-  <li>返回 test 方法</li>
+  <li>一開始先將 block 物件化成 Proc 實體，指定給 <code class="highlighter-rouge">block99</code></li>
+  <li>將 <code class="highlighter-rouge">block99</code> 傳入 <code class="highlighter-rouge">test</code> 方法，方法裡使用 <code class="highlighter-rouge">.call</code> or <code class="highlighter-rouge">yield</code> 將執行權暫時交給 <code class="highlighter-rouge">block99</code>，並順手給了個伴手禮 <code class="highlighter-rouge">"car"</code></li>
+  <li><code class="highlighter-rouge">block99</code> 拿到 <code class="highlighter-rouge">"car"</code>，指定給 x 變數，再從 <code class="highlighter-rouge">||</code> 拿出 x 執行後段程式碼</li>
+  <li>返回 <code class="highlighter-rouge">test</code>，執行 <code class="highlighter-rouge">puts "Holding..."</code></li>
 </ol>
 
 <p><strong>最後，要特別解釋兩種 callblock 方式：</strong></p>
@@ -331,7 +329,7 @@
 <span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">).</span><span class="nf">collect</span> <span class="p">{</span> <span class="o">|</span><span class="n">num</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">num</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Ruby 會是這麼解讀: 對 (1..3) 使用 collect 方法，collect 方法會掛載定義好的 block，如果 <code class="highlighter-rouge">to_s</code> 還不是 Proc 實體，就實體物件化 <code class="highlighter-rouge">to_s</code>吧。</p>
+<p>Ruby 會是這麼解讀: 對 (1..3) 使用 <code class="highlighter-rouge">collect</code> 方法，<code class="highlighter-rouge">collect</code> 會掛載定義好的 block，如果 <code class="highlighter-rouge">to_s</code> 還不是 Proc 實體，就實體物件化 <code class="highlighter-rouge">to_s</code>。</p>
 
 <p>如果要追溯 Symbol 的 <code class="highlighter-rouge">to_proc</code> 方法是如何運作的，可以找到這篇 <a href="https://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby">stackoverflow</a></p>
 

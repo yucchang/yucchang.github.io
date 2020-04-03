@@ -33,7 +33,7 @@ tags:	[programming, Ruby]
 
 ## String (字串) & Symbol (符號) 差別?
 
-#### 1. String 內容可以改變，但 Symbol 不行
+### 1. String 內容可以改變，但 Symbol 不行
 ```ruby
 # 使用中括號填入數字 (index) 來取得字元
 >> "cube"[1]
@@ -54,7 +54,7 @@ tags:	[programming, Ruby]
 => NoMethodError (undefined method `[]=' for :cube:Symbol)
 ```
 
-#### 2. Symbol 效能比較好
+### 2. Symbol 效能比較好
 - 以下以 `object_id` 實測。(`object_id` 代表物件在 Ruby 裡的 `id`，不同的物件想當然有不同 `id` 就像你跟我身份證號碼不一樣。)
 
 ```ruby
@@ -116,11 +116,11 @@ kerker... 依照我這樣打，量測真的都要等到 total 秒數到。
 ```
 
 ## Symbol 特性及使用時機
-#### Symbol 特性:
+### Symbol 特性:
 1. 不可變更 (Immutable), object_id 有唯一性
 2. 效能比 String 好
 
-#### 什麼時候該使用 Symbol?
+### 什麼時候該使用 Symbol?
 適合拿來當作 Hash 中的 Key:
 ```ruby
 >> person = { name: "Rocky", age: "40"}  

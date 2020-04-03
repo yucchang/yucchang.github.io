@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Tech / Programming Rookie
+subtitle: Programming Rookie
 ---
 
 Hi, I'm Yu Cheng. A guy always with big smile, and shorts plus Nike socks as my normal dress-code.

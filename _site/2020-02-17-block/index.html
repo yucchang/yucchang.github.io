@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 - Learn to be greater." href="http://localhost:4000/feed.xml" />
 
   
 
@@ -115,7 +115,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -230,27 +230,27 @@
 
 <p><img src="/img/yield.jpeg" alt="yield" class="center-block" /></p>
 
-<p>剛剛 Ruby 的阿爸其中有一段 ‘ <em>using <code class="highlighter-rouge">yield</code> with value</em> ‘：代表使用 <code class="highlighter-rouge">yield</code> 可以傳值(參數)給 Block，</p>
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pass</span>
+<p>剛剛 Ruby 的老杯其中有一段 ‘ <em>using <code class="highlighter-rouge">yield</code> with value</em> ‘：代表使用 <code class="highlighter-rouge">yield</code> 可以傳值(參數)給 Block，</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_1st_down</span>
   <span class="k">yield</span> <span class="mi">24</span>
   <span class="nb">puts</span> <span class="s2">"first down!"</span>
 <span class="k">end</span>
 
-<span class="n">pass</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> yard-pass"</span> <span class="p">}</span>
+<span class="n">get_1st_down</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> yard-pass"</span> <span class="p">}</span>
 <span class="c1"># =&gt; 24 yard-pass</span>
 <span class="c1"># =&gt; first down!</span>
 </code></pre></div></div>
 
-<p>就像解任務般：任務 <code class="highlighter-rouge">pass</code></p>
+<p>就像解任務般：任務 <code class="highlighter-rouge">get_1st_down</code></p>
 <ol>
-  <li>一開始要去找 NPC <code class="highlighter-rouge">yield</code>，</li>
-  <li>NPC <code class="highlighter-rouge">yield</code>: 你拿著這個素材 <code class="highlighter-rouge">24</code> 先去完成 block 裡的內容，才能進行下一步。</li>
-  <li>你拿著素材 <code class="highlighter-rouge">24</code> 執行了 block 裡的內容 <code class="highlighter-rouge">puts "#{素材} yard-pass"</code></li>
-  <li>回過頭去執行 <code class="highlighter-rouge">puts "first down!"</code></li>
+  <li>任務指示一開始要去找 NPC <code class="highlighter-rouge">yield</code>，</li>
+  <li>找到 NPC <code class="highlighter-rouge">yield</code>: 你拿著這個素材 <code class="highlighter-rouge">24</code> 先去完成 block 裡的內容（執行支線任務）。</li>
+  <li>你拿著素材 <code class="highlighter-rouge">24</code> 執行了支線裡的內容 <code class="highlighter-rouge">puts "#{素材} yard-pass"</code></li>
+  <li>回過頭去完成 <code class="highlighter-rouge">puts "first down!"</code></li>
   <li>Quest Clear!!</li>
 </ol>
 
-<p>那怎麼去驗證 NPC <code class="highlighter-rouge">yield</code> 有沒有唬爛? 使用 Ruby 內建方法 <code class="highlighter-rouge">block_given?</code>:</p>
+<p>那怎麼去驗證 NPC <code class="highlighter-rouge">yield</code> 有沒有唬爛? 使用 Ruby 內建方法 <code class="highlighter-rouge">block_given?</code>，</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 使用 block_given?</span>
 <span class="k">def</span> <span class="nf">is_block</span>
    <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>  <span class="c1"># return true then execute  </span>
@@ -309,7 +309,7 @@
 
 <p>使用 fetch 方法抓 Hash 裡 <code class="highlighter-rouge">:a</code> 的值，如果沒有該值便會印出後面 <code class="highlighter-rouge">no such value</code>，比較像是設定 Default 的使用。(注意就算是 nil 也是有值)</p>
 
-<p><strong>callback:</strong></p>
+<p><strong>Callback:</strong></p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">http_request</span><span class="p">(</span><span class="o">&amp;</span><span class="n">on_complete</span><span class="p">)</span>
 <span class="c1"># ...</span>
 <span class="n">on_complete</span><span class="p">.</span><span class="nf">call</span>

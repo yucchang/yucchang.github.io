@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="賈蓋先 の Tech Blog - Usually about programming, life or anything else that can described in words." href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="賈蓋先 - Learn to be greater." href="http://localhost:4000/feed.xml" />
 
   
 
@@ -115,7 +115,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先 の Tech Blog</a></div>
+      </button><a class="navbar-brand" href="http://localhost:4000/">賈蓋先</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -219,7 +219,7 @@
 <p>啊哈！現在我們理解為何 <code class="highlighter-rouge">has_many_attached</code> 會先刪除既有檔案了。</p>
 
 <h4 id="laziest-simplest-way"><del>Laziest</del> Simplest way</h4>
-<p>其實上面那些已是我在 stackoverflow 上找到更<del>偷懶</del>簡單的解決方法之後的事了。這篇 <a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">stackoverflow</a> 裡的留言也提到除了 <code class="highlighter-rouge">#attach</code> 方法外，還有一個大絕招……</p>
+<p>其實上面那些已是我在 stackoverflow 上找到更 <del>偷懶</del> 簡單的解決方法之後的事了。這篇 <a href="https://stackoverflow.com/questions/58282845/rails-6-active-storage-could-not-find-or-build-blob-expected-attachable-got">stackoverflow</a> 裡的留言也提到除了 <code class="highlighter-rouge">#attach</code> 方法外，還有一個大絕招……</p>
 
 <p>就是到 <code class="highlighter-rouge">application.rb</code> 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 <code class="highlighter-rouge">update</code> 便不會再將原有的檔案先刪除了。- 實在太簡單，以至於我用了之後有點不好意思。</p>
 

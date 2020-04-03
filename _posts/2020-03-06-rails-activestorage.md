@@ -42,7 +42,7 @@ Commit message 提到：
 啊哈！現在我們理解為何 `has_many_attached` 會先刪除既有檔案了。
 
 #### ~~Laziest~~ Simplest way
-其實上面那些已是我在 stackoverflow 上找到更~~偷懶~~簡單的解決方法之後的事了。這篇 [stackoverflow] 裡的留言也提到除了 `#attach` 方法外，還有一個大絕招......
+其實上面那些已是我在 stackoverflow 上找到更 ~~偷懶~~ 簡單的解決方法之後的事了。這篇 [stackoverflow] 裡的留言也提到除了 `#attach` 方法外，還有一個大絕招......
 
 就是到 `application.rb` 直接修改 ActiveStorage 預設設定。這樣一來直覺的使用 `update` 便不會再將原有的檔案先刪除了。- 實在太簡單，以至於我用了之後有點不好意思。
 
